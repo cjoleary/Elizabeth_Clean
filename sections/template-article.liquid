@@ -39,7 +39,11 @@
                 </div>
     
             {% when 'article_content' %}
-                <div class="">{{ article.content }}</div>
+                <div class="flex items-center justify-center">
+                    <div class="max-w-4xl">
+                        {{ article.content }}
+                    </div>
+                </div>
     
             {% else %}
                 
