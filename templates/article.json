@@ -1,10 +1,14 @@
 {
-    "sections": {
-        "template": {
-            "type": "template-article"
-        }
-    },
-    "order": [
-        "template"
-    ]
+  "sections": {
+    "template": {
+      "type": "template-article",
+      "settings": {
+        "enable_author": false,
+        "enable_published_date": false
+      }
+    }
+  },
+  "order": [
+    "template"
+  ]
 }
