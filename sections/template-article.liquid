@@ -1,8 +1,13 @@
 <h1>{{ article.title }}</h1>
 
-<small>{{ article.author }}</small>
+{% if section.settings.enable_author %}
+    <small>{{ article.author }}</small>
+{% endif %}
 
-<time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%Y-%m-%d' }}</time>
+{% if section.settings.enable_published_date %} 
+    <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%Y-%m-%d' }}</time>  
+{% endif %}
+
 
 <img src="{{ article.image | img_url: 'large' }}" alt="{{ article.image.alt }}">
 
