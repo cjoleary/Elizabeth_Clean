@@ -3,7 +3,7 @@
     "template": {
       "type": "template-article",
       "settings": {
-        "enable_author": false,
+        "enable_author": true,
         "enable_published_date": false
       }
     }
