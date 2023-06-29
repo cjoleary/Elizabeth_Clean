@@ -25,7 +25,11 @@
         "published_date",
         "thumbnail",
         "content"
-      ]
+      ],
+      "settings": {
+        "enable_author": false,
+        "enable_published_date": false
+      }
     }
   },
   "order": [
