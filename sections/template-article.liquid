@@ -51,6 +51,43 @@
     {% endfor %}
 </article>
 
+{% if blog.comments_enabled? %}
+    <div id="comments" class="my-8">
+        {% if article.comments_count > 0 %}
+        {% else %}
+             There are no comments in this article   
+        {% endif %}
+    </div>
+
+    <div id="comment_form" class="mb-8">
+        {% form 'new_comment', article %}
+            <div class="flex-1 mx-auto items-center justify-center max-w-4xl px-4">
+                <div class="px-1 md:flex mb-3">
+                    <div class="px-3 md:w-1/2">
+                        <label for="comment_author" class="text-gray-700 font-medium uppercase text-xs mb-2">Name</label>
+                        <input type="text" name="comment[author]" id="comment_author" class="w-full text-gray-700 border py-3 px-4 mb-3 focus:outline-none" placeholder="Jane Doe" required>
+                    </div>
+                    <div class="px-3 md:w-1/2">
+                        <label for="comment_email" class="text-gray-700 font-medium uppercase text-xs mb-2">Email</label>
+                        <input type="email" name="comment[email]" id="comment_email" class="w-full text-gray-700 border py-3 px-4 mb-3 focus:outline-none" placeholder="jane@doe.com" required>
+                    </div>
+                </div>
+                <div class="px-1 md:flex mb-3">
+                    <div class="md:w-full px-3">
+                        <label for="comment_content" class="text-gray-700 font-medium uppercase text-xs mb-2">Comment</label>
+                        <textarea class="w-full text-gray-700 border resize-none h-20 py-2 px-3 focus:outline-none" name="comment[body]" id="comment_content" required></textarea>
+                    </div>
+                </div>
+                <div class="px-1 md:flex mb-3">
+                    <div class="md:w-full px-3">
+                        <input type="submit" class="w-full cursor-pointer px-4 py-2 text-base font-medium text-white bg-gray-900 hover:bg-gray-500" value="Post comment">
+                    </div>
+                </div>
+            </div>
+        {% endform %}
+    </div>
+{% endif %}
+
 {% schema %}
     {
         "name": "Template Article",
