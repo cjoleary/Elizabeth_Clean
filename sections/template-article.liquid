@@ -92,7 +92,7 @@
                         <ul class="px-4 mb-3 ml-7 list-decimal">
                             {% for error in form.errors %}
                                 <li>
-                                    <span>{{ form.errors.message[error] }}</span>
+                                    <span>{{ form.errors.messages[error] }}</span>
                                 </li>
                             {% endfor %}
                         </ul>
@@ -107,6 +107,7 @@
                     </div>
                 </div>
                 {% endif %}
+
                 <div class="px-1 md:flex mb-3">
                     <div class="px-3 md:w-1/2">
                         <label for="comment_author" class="text-gray-700 font-medium uppercase text-xs mb-2">Name</label>
