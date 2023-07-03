@@ -12,7 +12,10 @@
                                     <img class="w-full h-80 object-cover" src="{{ article.image | img_url: 'medium' }}" alt="{{ article.image.alt }}">
                                 </a>
                             {% else %}
-                                {{ 'image' | placeholder_svg_tag: 'w-full h-80 object-cover bg-gray-100' }}
+                                <a href="{{ article.url }}">
+
+                                    {{ 'image' | placeholder_svg_tag: 'w-full h-80 object-cover bg-gray-100' }}
+                                </a>
                             {% endif %}
 
                             <div class="p-4">
@@ -33,7 +36,9 @@
                 {% endfor %}
             </div>
         </div>
-        
+        <div class="max-x-6xl mx-auto">
+            {% render 'pagination', pagination: paginate %}
+        </div>
     {% endpaginate %}
 </div>
 
@@ -49,7 +54,7 @@
                 "min": 1,
                 "max": 6,
                 "label": "Blog posts per page",
-                "default": 3
+                "default": 1
             },
             {
                 "type": "text",
