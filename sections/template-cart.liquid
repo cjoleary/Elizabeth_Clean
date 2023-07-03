@@ -5,23 +5,6 @@
                 <h1 class="text-3xl">Your cart</h1>
                 <a href="{{ routes.all_products_collection_url }}" class="text-blue-600 hover:text-blue-800 font-medium underline">Continue Shopping</a>
             </div>
-
-            <div class="w-full my-4 md:w-80">
-                {% for block in section.blocks %}
-                    {% case block.type %}
-                        {% when 'subtotal' %}
-                            <h3 class="text-xl">Subtotal: {{ cart.total_price | money }}</h3>   
-                        {% when 'update_button' %}
-                            <div class="my-2">
-                                <button type="submit" name="update" class="w-full p-3 border border-gray-600 text-gray-600 font-medium hover:bg-gray-600 hover:text-white">Update</button> 
-                            </div>
-                        {% when 'checkout_button' %}
-                            <div class="my-2">
-                                <button type="submit" name="checkout" class="w-full p-3 border border-gray-600 font-medium bg-gray-600 text-white">Checkout</button>
-                            </div>
-                    {% endcase %}
-                {% endfor %} 
-            </div>
         </div>
 
         <div class="max-w-6xl flex flex-col my-10 mx-auto">
@@ -82,6 +65,8 @@
                                     <div class="my-2">
                                         <button type="submit" name="checkout" class="w-full p-3 border border-gray-600 font-medium bg-gray-600 text-white">Checkout</button>
                                     </div>
+                                {% else %}
+                                    
                             {% endcase %}
                         {% endfor %} 
                     </div>
@@ -95,6 +80,25 @@
             <h1 class="text-3xl my-4">Your cart is empty</h1>
             <div class="my-4 py-4">
                 <a href="{{ routes.all_products_collection_url }}" class="border border-gray-600 text-white bg-gray-600 px-8 py-3">Continue Shopping</a>
+            </div>
+
+            <div class="w-full my-4 md:w-80">
+                {% for block in section.blocks %}
+                    {% case block.type %}
+                        {% when 'subtotal' %}
+                            <h3 class="text-xl">Subtotal: {{ cart.total_price | money }}</h3>   
+                        {% when 'update_button' %}
+                            <div class="my-2">
+                                <button type="submit" name="update" class="w-full p-3 border border-gray-600 text-gray-600 font-medium hover:bg-gray-600 hover:text-white">Update</button> 
+                            </div>
+                        {% when 'checkout_button' %}
+                            <div class="my-2">
+                                <button type="submit" name="checkout" class="w-full p-3 border border-gray-600 font-medium bg-gray-600 text-white">Checkout</button>
+                            </div>
+                        {% else %}
+                            
+                    {% endcase %}
+                {% endfor %} 
             </div>
         </div>
     </div>
