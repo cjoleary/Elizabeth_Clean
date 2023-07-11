@@ -1,5 +1,5 @@
 {% for product in section.settings.featured_collection.products %}
-    {% render 'product-card', product_product: product %}
+    {% render 'product-card', product_product: product, show_product_vendor: true %}
 {% endfor %}
 
 {% schema %}
