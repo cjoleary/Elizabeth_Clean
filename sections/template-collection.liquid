@@ -5,28 +5,7 @@
         <div class="max-w-6xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
              {% for product in collection.products %}
-                <div class="w-full py-6 px-3">
-                    <div class="border bg-white shadow-lg rounded-lg overflow-hidden">
-                        <a href="{{ product.url }}">
-                            <div class="h-80 overflow-hidden">
-                                {% if product.featured_image %}
-                                    <img class="w-full h-full object-cover" src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.featured_image.alt }}">
-                                {% else %}
-                                    {{ 'product-1' | placeholder_svg_tag: "w-full h-full object-cover bg-gray-100" }}             
-                                {% endif %}
-                            </div>
-                        </a>
-
-                        <div class="flex flex-col p-4">
-                            <span class="text-sm text-gray-400">{{ product.vendor }}</span>
-
-                            <a class="text-gray-700 uppercase font-medium" href="{{ product.url }}">{{ product.title }}</a>
-
-                            <p class="text-gray-500">{{ product.price | money }}</p>
-                        </div>
- 
-                    </div>
-                </div>
+                {% render 'product-card', product_product: product %}
     
             {% else %}
                 <p>There are no products inside of this collection</p>
