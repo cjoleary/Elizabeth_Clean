@@ -3,8 +3,7 @@
     "template": {
       "type": "template-collection",
       "settings": {
-        "num_per_page": 6,
-        "featured_collection": "all"
+        "num_per_page": 6
       }
     }
   },
