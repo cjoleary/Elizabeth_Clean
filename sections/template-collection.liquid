@@ -1,17 +1,40 @@
-{% paginate collection.products by 6 %}
-    {% for product in collection.products %}
-        {% if product.featured_image %}
-            <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.featured_image.alt }}">
-        {% endif %}
+<div class="px-4 py-8">
+    {% paginate collection.products by 6 %}
+        <h1 class="text-3xl text-center">{{ collection.title }}</h1>
 
-        <span>{{ product.vendor }}</span>
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+             {% for product in collection.products %}
+                <div class="w-full py-6 px-3">
+                    <div class="border bg-white shadow-lg rounded-lg overflow-hidden">
+                        <a href="{{ product.url }}">
+                            <div class="h-80 overflow-hidden">
+                                {% if product.featured_image %}
+                                    <img class="w-full h-full object-cover" src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.featured_image.alt }}">
+                                {% else %}
+                                    {{ 'product-1' | placeholder_svg_tag: "w-full h-full object-cover bg-gray-100" }}             
+                                {% endif %}
+                            </div>
+                        </a>
 
-        <a href="{{ product.url }}">{{ product.title }}</a>
+                        <div class="flex flex-col p-4">
+                            <span class="text-sm text-gray-400">{{ product.vendor }}</span>
 
-        <p>{{ product.price | money }}</p>
-    {% else %}
-        <p>There are no products inside of this collection</p>
-    {% endfor %}
+                            <a class="text-gray-700 uppercase font-medium" href="{{ product.url }}">{{ product.title }}</a>
 
-    {% render 'pagination', pagination: paginate %}
-{% endpaginate %}
+                            <p class="text-gray-500">{{ product.price | money }}</p>
+                        </div>
+ 
+                    </div>
+                </div>
+    
+            {% else %}
+                <p>There are no products inside of this collection</p>
+            {% endfor %}
+            </div>
+        </div>
+       
+
+        {% render 'pagination', pagination: paginate %}
+    {% endpaginate %}
+</div>
