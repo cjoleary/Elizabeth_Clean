@@ -7,9 +7,27 @@
         "featured_collection": "frontpage",
         "num_of_products_shown": 8
       }
+    },
+    "fc28d2a8-737c-414e-8e40-3cbdd0f2e968": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured Clothing",
+        "featured_collection": "",
+        "num_of_products_shown": 4
+      }
+    },
+    "a3325514-82d9-4219-9b31-bbef351ee202": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured Shoes",
+        "featured_collection": "",
+        "num_of_products_shown": 4
+      }
     }
   },
   "order": [
-    "featured-collection"
+    "featured-collection",
+    "fc28d2a8-737c-414e-8e40-3cbdd0f2e968",
+    "a3325514-82d9-4219-9b31-bbef351ee202"
   ]
 }
