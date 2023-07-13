@@ -27,6 +27,7 @@
     "c1b84d61-6f78-4d21-8a41-7fddcbefaa00": {
       "type": "contact-form",
       "settings": {
+        "title": "Contact Form"
       }
     }
   },
