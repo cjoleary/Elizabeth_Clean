@@ -1,6 +1,6 @@
 {% assign main_menu_linklist = linklists[section.settings.menu].links %}
 
-<div class="relative bg-white" x-data="{ mobileMenuOpen: false }">
+<div class="relative bg-white" x-data="{ mobileMenuOpen: false, searchBarOpen: false }">
   <div class="mx-auto px-4 sm:px-6">
     <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
       <!-- STORE NAME / STORE LOGO -->
@@ -19,6 +19,11 @@
 
       <!-- NAVIGATION MENU -->
       <nav class="hidden md:flex space-x-10">
+      {% if section.settings.menu.links == blank %}
+          {% assign main_menu_linklist = linklists[section.settings.menu].links %}
+      {% else %}
+          {% assign main_menu_linklist = section.settings.menu.links %}
+      {% endif %}
         {% for link in main_menu_linklist %}
           {% if link.links != blank %}
             {% assign link_handle = link.handle | replace: '-', '_' %}
@@ -32,6 +37,12 @@
               </button>
 
               <div
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 translate-y-3"
+                x-transition:enter-end="opacity-100 translate-y-0"
+                x-transition:leave="transition ease-out duration-300"
+                x-transition:leave-start="opacity-100 translate-y-0"
+                x-transition:leave-end="opacity-0 translate-y-3"
                 x-show="{{ link_handle }}"
                 @click.away="{{ link_handle }} = false"
                 class="absolute z-10 -ml-5 mt-5 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2">
@@ -62,14 +73,23 @@
         {% endfor %}
       </nav>
 
+      <!-- CART BUTTON / ACCOUNT LINKS IF ENABLED -->
       <div class="hidden md:flex items-center justify-end md:flex-1 space-x-5">
+        <button x-on:click="searchBarOpen = true" type="button" class="whitespace-nowrap text-base text-gray-500 hover:text-gray-900">
+          {% render 'icon-search' %}
+        </button>
         <a href="{{ routes.cart_url }}" class="whitespace-nowrap text-base text-gray-500 hover:text-gray-900">
           {% render 'icon-shopping-bag' %}
         </a>
 
         {% if shop.customer_accounts_enabled %}
-          <a href="{{ routes.account_login_url }}" class="text-base text-gray-500 hover:text-gray-900">Login</a>
-          <a href="{{ routes.account_register_url }}" class="text-base text-gray-500 hover:text-gray-900">Register</a>
+            {% if customer %}
+                <a href="{{ routes.account_url }}" class="text-base text-gray-500 hover:text-gray-900">account</a>
+                {{ 'Log out'  | customer_logout_link | replace: '<a', '<a class="text-base text-gray-500 hover:text-gray-900"' }}
+            {% else %}
+                {{ 'Log in ' | customer_login_link | replace: '<a', '<a class="text-base text-gray-500 hover:text-gray-900"' }}
+                {{ 'Register' | customer_register_link | replace: '<a', '<a class="text-base text-gray-500 hover:text-gray-900"' }}
+            {% endif %}
         {% endif %}
 
       </div>
@@ -127,6 +147,22 @@
           </nav>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div x-show="searchBarOpen" class="w-full absolute top-0 bg-white border">
+    <button x-on:click="searchBarOpen = false" type="button" class="absolute top-0 right-0 mr-5 mt-5 text-gray-500">
+      {% render 'icon-close' %}
+    </button>
+    <div class="h-40 flex justify-center items-center">
+      <form action="{{ routes.search_url }}" method="GET" class="flex-auto mx-4">
+        <div class="relative text-gray-500 px-10 border">
+          <input type="search" name="q" placeholder="Search" class="w-full bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none">
+          <button type="submit" class="absolute right-0 top-0 mt-2 mr-2 md:mr-20">
+            {% render 'icon-search' %}
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
