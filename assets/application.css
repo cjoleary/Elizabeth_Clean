@@ -849,6 +849,10 @@ video {
   flex: 1 1 auto;
 }
 
+.flex-grow {
+  flex-grow: 1;
+}
+
 .table-auto {
   table-layout: auto;
 }
@@ -972,6 +976,10 @@ video {
 .divide-gray-50 > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-opacity: 1;
   border-color: rgb(249 250 251 / var(--tw-divide-opacity));
+}
+
+.self-center {
+  align-self: center;
 }
 
 .overflow-hidden {
