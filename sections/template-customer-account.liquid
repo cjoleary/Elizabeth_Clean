@@ -53,7 +53,7 @@
         <div class="w-full md:w-1/4">
             <h2 class="text-xl font-bold text-gray-700 mb-12">Account details</h2>
 
-            {{ customer.default_address }}
+            {{ customer.default_address | format_address }}
         </div>
     </div>
 </div>
