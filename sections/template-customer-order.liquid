@@ -10,4 +10,10 @@
 
         <a href="{{ routes.account_url }}" class="text-blue-700 hover:blue-900 underline font-medium">Back to account</a>
     </div>
+
+    <div>
+        {% for line_item in order.line_items %}
+            {{ line_item.product.title }}
+        {% endfor %}
+    </div>
 </div>
