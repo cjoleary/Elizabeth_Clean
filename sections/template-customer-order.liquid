@@ -47,7 +47,14 @@
                             {{ line_item.product.description | truncatewords: 15, '...'}}
                         </div>
                     </div>
-                </div>
+                    
+                    <div>
+                        <h2 class="font-medium mb-4">Delivery address:</h2>
+
+                        <div class="text-gray-500 mb-4">
+                            {{ order.shipping_address | format_address }}
+                        </div>
+                    </div>
             </div>
         {% endfor %}
     </div>
