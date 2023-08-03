@@ -30,7 +30,7 @@
                             <tbody>
                                 <tr>
                                     <td class="border border-gray-200 px-4 py-2">Price:</td>
-                                    <td class="border border-gray-200 px-4 py-2">{{ line_item.original_price }}</td>
+                                    <td class="border border-gray-200 px-4 py-2">{{ line_item.original_price | money }}</td>
                                 </tr>
                                 <tr>
                                     <td class="border border-gray-200 px-4 py-2">Quantity:</td>
@@ -38,7 +38,7 @@
                                 </tr>
                                 <tr>
                                     <td class="border border-gray-200 px-4 py-2">Final price:</td>
-                                    <td class="border border-gray-200 px-4 py-2">{{ line_item.final_line_price }}</td>
+                                    <td class="border border-gray-200 px-4 py-2">{{ line_item.final_line_price | money }}</td>
                                 </tr>
                             </tbody>
                         </table>
