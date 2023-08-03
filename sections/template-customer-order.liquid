@@ -52,7 +52,13 @@
                         <h2 class="font-medium mb-4">Delivery address:</h2>
 
                         <div class="text-gray-500 mb-4">
-                            {{ order.shipping_address | format_address }}
+                            <p>
+                                {{ order.shipping_address.street }}
+                                <br>
+                                <span>{{ order.shipping_address.city }}, {{ order.shipping_address.province }} {{ order.shipping_address.zip }}</span>
+                                <br>
+                                {{ order.shipping_address.country }}
+                            </p>
                         </div>
                     </div>
             </div>
