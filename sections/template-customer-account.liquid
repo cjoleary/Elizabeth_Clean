@@ -25,6 +25,8 @@
                                         <h3 class="text-sm text-gray-700">
                                             {{ order.name | link_to: order.customer_url }}
                                         </h3>
+
+                                        <p class="mt-1 text-sm text-gray-500">{{ order.financial_status_label }}</p>
                                     </div>
 
                                     <div>
