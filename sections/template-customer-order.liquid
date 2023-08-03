@@ -69,7 +69,9 @@
                     {% if line_item.successfully_fulfilled_quantity > 0 %}
                         <p class="mb-2">We have fulfilled {{ line_item.successfully_fulfilled_quantity }} items in this order.</p>
                         <p class="mb-2">Shipping carrier: {{ line_item.fulfillment.tracking_company }}</p>
-                        <p class="mb-2">Tracking number: <a class="text-blue-700 hover:text-blue-900 underline font-medium" href="{{ line_item.fulfillment.tracking_url }}" target="_blank">{{ line_item.fulfillment.tracking_number }}</a> </p>
+                        <p class="mb-2">Tracking number: {{ line_item.fulfillment.tracking_number }} </p>
+
+                        <a href="{{ line_item.fulfillment.tracking_url }}" target="_blank" class="flex w-max text-sm text-white font-medium bg-gray-700 hover:bg-gray-900 px-4 py-1 rounded">Track order</a>
                     {% else %}
                         <p class="text-gray-500">This item is not yet fulfilled</p>
                     {% endif %}
