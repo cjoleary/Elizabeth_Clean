@@ -67,7 +67,9 @@
                     <h2 class="text-lg font-medium mb-4">Fulfillment</h2>
 
                     {% if line_item.successfully_fulfilled_quantity > 0 %}
-                        {{ line_item.successfully_fulfilled_quantity }}
+                        
+                    {% else %}
+                        <p class="text-gray-500">This item is not yet fulfilled</p>
                     {% endif %}
                 </div>
             </div>
