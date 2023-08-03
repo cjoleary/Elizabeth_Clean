@@ -14,7 +14,7 @@
                             <div class="relative">
                                 <div class="w-full min-80 bg-gray-200 rounded-md overflow-hidden lg:h-80">
                                     {% if order.line_items.first.image %}
-                                        <img src="{{ order.line_items.first.image | img_url: 'medium' }}" alt="{{ order.line_items.first.image.alt">
+                                        <img src="{{ order.line_items.first.image | img_url: 'medium' }}" alt="{{ order.line_items.first.image.alt }}">
                                     {% else %}
                                         
                                     {% endif %}
