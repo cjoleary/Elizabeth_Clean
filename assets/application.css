@@ -747,6 +747,10 @@ video {
   margin-top: 0.25rem;
 }
 
+.mb-12 {
+  margin-bottom: 3rem;
+}
+
 .block {
   display: block;
 }
@@ -1601,6 +1605,10 @@ video {
 
   .md\:w-full {
     width: 100%;
+  }
+
+  .md\:w-1\/4 {
+    width: 25%;
   }
 
   .md\:max-w-lg {
