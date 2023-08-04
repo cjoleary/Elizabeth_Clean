@@ -67,6 +67,30 @@
                         class="w-full text-gray-700 border px-4 py-3 focus:outline-none"
                     >
                 </div>
+
+                <div class="mb-4">
+                    <label for="address_city_{{ form.id }}" class="uppercase text-gray-700 text-xs font-medium mb-2">City</label>
+                    <input 
+                        type="text" 
+                        name="address[city]" 
+                        id="address_city_{{ form.id }}" 
+                        value="{{ form.city }}"
+                        class="w-full text-gray-700 border px-4 py-3 focus:outline-none"
+                    >
+                </div>
+
+                <div class="mb-4">
+                    <label for="address_country_{{ form.id }}" class="uppercase text-gray-700 text-xs font-medium mb-2">Country</label>
+                    <select 
+                        type="text" 
+                        name="address[country]" 
+                        id="address_country_{{ form.id }}" 
+                        value="{{ form.country }}"
+                        class="w-full text-gray-700 border px-4 py-3 focus:outline-none"
+                    >
+                        {{ all_country_option_tags }}
+                    </select>
+                </div>
             {% endform %}
         </div>
     </div>
