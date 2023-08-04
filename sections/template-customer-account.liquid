@@ -13,28 +13,30 @@
                     
                         {% for order in customer.orders %}
                             <div class="relative">
-                                <div class="w-full min-h-[80%] bg-gray-200 rounded-md overflow-hidden lg:h-80">
-                                    {% if order.line_items.first.image %}
-                                        <img class="w-full h-full object-center object-cover" src="{{ order.line_items.first.image | img_url: 'medium' }}" alt="{{ order.line_items.first.image.alt }}">
-                                    {% else %}
-                                        {{ 'product-1' | placeholder_svg_tag: 'w-full h-full object-center object-cover' }}
-                                    {% endif %}
-                                </div>
-
-                                <div class="mt-4 flex items-start justify-between">
-                                    <div>
-                                        <h3 class="text-sm text-gray-700">
-                                            {{ order.name | link_to: order.customer_url }}
-                                        </h3>
-
-                                        <p class="mt-1 text-sm text-gray-500">{{ order.financial_status_label }}</p>
+                                <a href="{{ order.customer_url }}">
+                                    <div class="w-full min-h-[80%] bg-gray-200 rounded-md overflow-hidden lg:h-80">
+                                        {% if order.line_items.first.image %}
+                                            <img class="w-full h-full object-center object-cover" src="{{ order.line_items.first.image | img_url: 'medium' }}" alt="{{ order.line_items.first.image.alt }}">
+                                        {% else %}
+                                            {{ 'product-1' | placeholder_svg_tag: 'w-full h-full object-center object-cover' }}
+                                        {% endif %}
                                     </div>
 
-                                    <div class="text-right">
-                                        <p class="text-sm font-medium text-white bg-gray-700 rounded-full px-3 py-1">{{ order.fulfillment_status_label }}</p>
-                                        <p class="text-sm">{{ order.total_price | money }}</p>
-                                    </div>
+                                    <div class="mt-4 flex items-start justify-between">
+                                        <div>
+                                            <h3 class="text-sm text-gray-700">
+                                                {{ order.name }}
+                                            </h3>
+
+                                            <p class="mt-1 text-sm text-gray-500">{{ order.financial_status_label }}</p>
+                                        </div>
+
+                                        <div class="text-right">
+                                            <p class="text-sm font-medium text-white bg-gray-700 rounded-full px-3 py-1">{{ order.fulfillment_status_label }}</p>
+                                            <p class="text-sm">{{ order.total_price | money }}</p>
+                                        </div>
                                 </div>
+                                </a>
                             </div>
                         {% endfor %}
                     </div>
