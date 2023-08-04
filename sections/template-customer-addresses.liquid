@@ -82,13 +82,24 @@
                 <div class="mb-4">
                     <label for="address_country_{{ form.id }}" class="uppercase text-gray-700 text-xs font-medium mb-2">Country</label>
                     <select 
-                        type="text" 
                         name="address[country]" 
                         id="address_country_{{ form.id }}" 
                         value="{{ form.country }}"
                         class="w-full text-gray-700 border px-4 py-3 focus:outline-none hover:cursor-pointer"
                     >
                         {{ all_country_option_tags }}
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label for="address_province_{{ form.id }}" class="uppercase text-gray-700 text-xs font-medium mb-2">State</label>
+                    <select 
+                        name="address[province]" 
+                        id="address_province_{{ form.id }}" 
+                        value="{{ form.province }}"
+                        class="w-full text-gray-700 border px-4 py-3 focus:outline-none hover:cursor-pointer"
+                    >
+                        
                     </select>
                 </div>
             {% endform %}
