@@ -34,6 +34,39 @@
                         class="w-full text-gray-700 border px-4 py-3 focus:outline-none"
                     >
                 </div>
+
+                <div class="mb-4">
+                    <label for="address_company_{{ form.id }}" class="uppercase text-gray-700 text-xs font-medium mb-2">Company</label>
+                    <input 
+                        type="text" 
+                        name="address[company]" 
+                        id="address_company_{{ form.id }}" 
+                        value="{{ form.company }}"
+                        class="w-full text-gray-700 border px-4 py-3 focus:outline-none"
+                    >
+                </div>
+
+                <div class="mb-4">
+                    <label for="address_address1_{{ form.id }}" class="uppercase text-gray-700 text-xs font-medium mb-2">Address 1</label>
+                    <input 
+                        type="text" 
+                        name="address[address1]" 
+                        id="address_address1_{{ form.id }}" 
+                        value="{{ form.address1 }}"
+                        class="w-full text-gray-700 border px-4 py-3 focus:outline-none"
+                    >
+                </div>
+
+                <div class="mb-4">
+                    <label for="address_address2_{{ form.id }}" class="uppercase text-gray-700 text-xs font-medium mb-2">Address 2</label>
+                    <input 
+                        type="text" 
+                        name="address[address2]" 
+                        id="address_address2_{{ form.id }}" 
+                        value="{{ form.address2 }}"
+                        class="w-full text-gray-700 border px-4 py-3 focus:outline-none"
+                    >
+                </div>
             {% endform %}
         </div>
     </div>
