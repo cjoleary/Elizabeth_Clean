@@ -90,6 +90,18 @@
 
         <div>
             <h2 class="font-medium mb-4">Payment information</h2>
+
+            {% for transaction in order.transactions %}
+                <div class="mb-4">
+                    {% assign credit_card_company = transaction.payment_details.credit_card_company %}
+
+                    {% if credit_card_company %}
+                        <p>{{ credit_card_company }}</p>
+                    {% else %}
+                        <p></p>
+                    {% endif %}
+                </div>
+            {% endfor %}
         </div>
 
         <div></div>
