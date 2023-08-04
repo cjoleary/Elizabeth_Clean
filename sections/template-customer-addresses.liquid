@@ -4,4 +4,13 @@
         <button class="text-white font-medium bg-gray-700 hover:bg-gray-900 px-6 py-2" type="button">Create new address</button>
         <a href="{{ routes.account_url }}" class="text-blue-600 hover:text-blue-800 font-medium underline">Back to account</a>
     </div>
+
+    <div>
+        {% paginate customer.addresses by 12 %}
+            div.grid.grid-cols-1.md:grid-cols-2.lg:grid-cols-4
+            {% for address in customer.addresses %}
+                
+            {% endfor %}
+        {% endpaginate %}
+    </div>
 </div>
