@@ -49,13 +49,13 @@
                     </div>
                     
                     <div>
-                        <h2 class="font-medium mb-4">Delivery address:</h2>
+                        <h2 class="font-medium mb-4">Delivery address</h2>
 
                         <div class="text-gray-500 mb-4">
                             <p>
                                 {{ order.shipping_address.street }}
                                 <br>
-                                <span>{{ order.shipping_address.city }}, {{ order.shipping_address.province_code }} {{ order.shipping_address.zip }}</span>
+                                <span>{{ order.shipping_address.city }} {{ order.shipping_address.province_code }} {{ order.shipping_address.zip }}</span>
                                 <br>
                                 {{ order.shipping_address.country }}
                             </p>
@@ -80,5 +80,57 @@
                 </div>
             </div>
         {% endfor %}
+    </div>
+
+    <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-12 border border-gray-200 rounded-sm p-4 md:p-12 my-6 bg-gray-50">
+        <div>
+            <h2 class="font-medium mb-4">Billing address</h2>
+            {{ order.billing_address | format_address }}
+        </div>
+
+        <div>
+            <h2 class="font-medium mb-4">Payment information</h2>
+
+            {% for transaction in order.transactions %}
+                <div class="mb-4">
+                    {% assign credit_card_company = transaction.payment_details.credit_card_company %}
+                    {% assign credit_card_last_four_digits = transaction.payment_details.credit_card_number %}
+
+                    {% if credit_card_company %}
+                        <p>{{ credit_card_company }}</p>
+                        <p>{{ credit_card_last_four_digits }}</p>
+
+                        {% case transaction.status_label %}
+                            {% when 'Failure' %}
+                                {% assign background = 'red' %}
+                            {% else %}
+                                {% assign background = 'green' %}
+                        {% endcase %}
+                        <span class="bg-{{ background }}-700 rounded-full text-sm px-4 py-1 text-white">{{ transaction.status_label }}</span>
+                    {% else %}
+                        <p class="text-sm mb-4">This order was manually placed by {{shop.name}}</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+
+        <div>
+            <table class="table-auto w-full mb-4">
+                <tbody>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-2">Subtotal:</td>
+                        <td class="border border-gray-200 px-4 py-2">{{ order.subtotal_price | money }}</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-2">Shipping:</td>
+                        <td class="border border-gray-200 px-4 py-2">{{ order.shipping_price | money }}</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-2">Total price:</td>
+                        <td class="border border-gray-200 px-4 py-2">{{ order.total_price | money }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
