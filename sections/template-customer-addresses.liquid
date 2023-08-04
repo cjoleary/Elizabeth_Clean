@@ -14,6 +14,10 @@
                             {% if address == customer.default_address %}
                                 <span class="text-xs font-medium text-white bg-green-700 px-4 p-2">Default</span>
                             {% endif %}
+
+                            <div class="my-8 h-full">
+                                {{ address | format_address }}
+                            </div>
                         </div>
                     </div>
                 {% endfor %}
