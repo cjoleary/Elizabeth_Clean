@@ -202,7 +202,6 @@
                 }
 
                 provinceSelector.innerHTML = options;
-                console.log('we got options')
             });
         }
 
@@ -230,11 +229,11 @@
             addressesSelector.forEach(select => {
                 select.addEventListener('change', function(e) {
                     let provinces = this.options[this.selectedIndex].dataset.provinces;
-                    let provinceArray = JSON.parse(provinces);
+                    let provincesArray = JSON.parse(provinces);
 
                     let provinceSelector = document.querySelector(`#address_province_${this.dataset.id}`);
 
-                    if( provinceArray.length < 1 ) {
+                    if( provincesArray.length < 1 ) {
                         provinceSelector.setAttribute('disabled', 'disabled');
                     } else {
                         provinceSelector.removeAttribute('disabled');
@@ -242,8 +241,8 @@
 
                     provinceSelector.innerHTML = '';
                     let options = '';
-                    for( let i = 0; i < provinceArray.length; i++ ) {
-                        options += `<option value="${provinceArray[i][0]}">${provinceArray[i][0]}</option>`;
+                    for( let i = 0; i < provincesArray.length; i++ ) {
+                        options += `<option value="${provincesArray[i][0]}">${provincesArray[i][0]}</option>`;
                     }
 
                     provinceSelector.innerHTML = options;
