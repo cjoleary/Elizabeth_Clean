@@ -194,7 +194,7 @@
                 for( let i = 0; i < provincesArray.length; i++  ) {
                     let options;
 
-                    if( provincesArray[index][0] === provinceSelector.getAttribute('value') ) {
+                    if( provincesArray[i][0] === provinceSelector.getAttribute('value') ) {
                         options += `<option value="${provincesArray[i][0]}" selected>${provincesArray[i][0]}</option>`;
                     } else {
                         options += `<option value="${provincesArray[i][0]}">${provincesArray[i][0]}</option>`;
