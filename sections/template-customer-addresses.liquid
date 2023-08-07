@@ -202,7 +202,6 @@
                 }
 
                 provinceSelector.innerHTML = options;
-                console.log('we got options')
             });
         }
 
@@ -243,7 +242,11 @@
                     provinceSelector.innerHTML = '';
                     let options = '';
                     for( let i = 0; i < provinceArray.length; i++ ) {
-                        options += `<option value="${provinceArray[i][0]}">${provinceArray[i][0]}</option>`;
+                        if( provincesArray[i][0] === provinceSelector.getAttribute('value') ) {
+                            options += `<option value="${provincesArray[i][0]}" selected>${provincesArray[i][0]}</option>`;
+                        } else {
+                            options += `<option value="${provincesArray[i][0]}">${provincesArray[i][0]}</option>`;
+                        }
                     }
 
                     provinceSelector.innerHTML = options;
