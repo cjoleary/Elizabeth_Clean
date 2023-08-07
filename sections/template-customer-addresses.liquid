@@ -184,7 +184,7 @@
                 let provinceSelector = document.querySelector(`#address_province_${select.dataset.id}`);
 
                 if( provincesArray.length < 1 ) {
-                    provinceSelector.setAttribue('disabled', 'disabled');
+                    provinceSelector.setAttribute('disabled', 'disabled');
                 } else {
                     provinceSelector.removeAttribute('disabled');
                 }
@@ -213,7 +213,7 @@
 
                 if( option.value === select.getAttribute('value') ) {
                     selectedOption = option;
-                    selectedOption.setAttribue('selected', 'selected');
+                    selectedOption.setAttribute('selected', 'selected');
                     break;
                 }
             }
