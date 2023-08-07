@@ -227,7 +227,7 @@
             if( addressesSelector.length < 1 ) return;
 
             addressesSelector.forEach(select => {
-                select.addEventListener('change', (e) => {
+                select.addEventListener('change', function(e) {
                     let provinces = this.options[this.selectedIndex].dataset.provinces;
                     console.log(`${provinces} plz`);
                 });
