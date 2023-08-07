@@ -181,7 +181,26 @@
                 let provincesArray = JSON.parse(provinces);
 
                 let provinceSelector = document.querySelector(`#address_province_${select.dataset.id}`);
-                console.log(provinceSelector);
+
+                if( provincesArray.length < 1 ) {
+                    provinceSelector.setAttribue('disabled', 'disabled');
+                } else {
+                    provinceSelector.removeAttribute('disabled');
+                }
+
+                provinceSelector.innerHTML = '';
+
+                for( let i = 0; i < provincesArray.length; i++  ) {
+                    let options;
+
+                    if( provincesArray[index][0] === provinceSelector.getAttribute('value') ) {
+                        options += `<option value="${provincesArray[i][0]}" selected>${provincesArray[i][0]}</option>`;
+                    } else {
+                        options += `<option value="${provincesArray[i][0]}">${provincesArray[i][0]}</option>`;
+                    }
+                }
+
+                provinceSelector.innerHTML = options;
             });
         }
 
