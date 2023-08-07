@@ -227,7 +227,7 @@
             if( addressesSelector.length < 1 ) return;
 
             addressesSelector.addEventListener('change', (e) => {
-                let provinces = this.options[this.selectedIndex].dataset.provinces;
+                let provinces = e.target.options[e.target.selectedIndex].dataset.provinces;
                 console.log(provinces);
             });
         }
