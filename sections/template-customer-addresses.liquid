@@ -86,6 +86,7 @@
                         id="address_country_{{ form.id }}" 
                         value="{{ form.country }}"
                         class="w-full text-gray-700 border px-4 py-3 focus:outline-none hover:cursor-pointer"
+                        data-country-selector
                     >
                         {{ all_country_option_tags }}
                     </select>
@@ -166,7 +167,7 @@
         }
 
         initCustomerAddress() {
-            console.log('hellow address');
+            const allAddressesSelector = document.querySelectorAll('select[]')
         }
     }
 
