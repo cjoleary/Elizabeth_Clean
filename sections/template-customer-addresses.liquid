@@ -219,6 +219,18 @@
 
             return selectedOption;
         }
+
+        customerAddressesSelector() {
+            const addressesSelector =  document.querySelectorAll('select[data-country-selector]');
+
+            if( addressesSelector.length < 1 ) return;
+
+            addressesSelector.forEach(select => {
+                select.addEventListener('change', (e) => {
+                    console.log('hello again');
+                });
+            });
+        }
     }
 
     const customerAddress = new CustomerAddress();
