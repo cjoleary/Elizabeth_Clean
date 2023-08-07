@@ -228,7 +228,7 @@
 
             addressesSelector.forEach(select => {
                 select.addEventListener('change', (e) => {
-                    let provinces = this.options[this.selectedIndex].dataset.provinces;
+                    var provinces = this.options[this.selectedIndex].dataset.provinces;
                     console.log(provinces);
                 });
             });
