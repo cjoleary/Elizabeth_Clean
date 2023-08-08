@@ -168,6 +168,10 @@
                                     Delete
                                 </button>
                             </div>
+
+                            <form method="post" action="{{ address.url }}">
+
+                            </form>
                         </div>
 
                         <div x-show="address_{{ address.id }}" class="h-full w-full fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto z-50">
@@ -328,7 +332,7 @@
 
             deleteBtns.forEach(button => {
                 button.addEventListener('click', function(e) {
-                    console.log('delete meeeeeee')
+                    
                 });
             });
         }
