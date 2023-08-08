@@ -146,9 +146,9 @@
                 {% for address in customer.addresses %}
                     <div 
                         x-data="{ address_{{ address.id }}: false }"
-                            {% if address == customer.default_address %}
-                                class="col-start-1 row-start-1"
-                            {% endif %}
+                        {% if address == customer.default_address %}
+                            class="col-start-1 row-start-1"
+                        {% endif %}
                     >
                         <div class="relative h-full flex flex-col text-center border p-2">
                             {% if address == customer.default_address %}
