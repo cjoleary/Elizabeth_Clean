@@ -129,7 +129,7 @@
 
                 <div class="flex items-center mb-6">
                     {{ form.set_as_default_checkbox | class: 'mb-2' }}
-                    <label for="address_default_address_{{ form.id }}" class="uppercase text-gray-700 text-xs font-medium ml-2">Set as default address</label>
+                    <label for="address_default_address_{{ form.id }}" class="uppercase text-gray-700 text-xs font-medium ml-2 hover:cursor-pointer">Set as default address</label>
                 </div>
 
                 <div class="flex gap-2">
@@ -303,9 +303,9 @@
                                     </div>
 
                                     {% if address != customer.default_address %}
-                                        <div class="flex items-center mb-6 hover:cursor-pointer">
+                                        <div class="flex items-center mb-6">
                                             {{ form.set_as_default_checkbox | class: 'mb-2' }}
-                                            <label for="address_default_address_{{ form.id }}" class="uppercase text-gray-700 text-xs font-medium ml-2">Set as default address</label>
+                                            <label for="address_default_address_{{ form.id }}" class="uppercase text-gray-700 text-xs font-medium ml-2 hover:cursor-pointer">Set as default address</label>
                                         </div>
                                     {% else %}
                                         <div class="h-2"></div>
