@@ -139,7 +139,7 @@
         {% paginate customer.addresses by 12 %}
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-12 p-4 md:p-12">
                 {% for address in customer.addresses %}
-                    <div x-data="{ address_{{ address.id }} }: false">
+                    <div x-data="{ address_{{ address.id }}: false }">
                         <div class="relative h-full flex flex-col text-center border p-2">
                             {% if address == customer.default_address %}
                                 <span class="text-xs font-medium text-white bg-green-700 px-4 p-2">Default</span>
