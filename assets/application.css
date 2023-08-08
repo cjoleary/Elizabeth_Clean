@@ -859,6 +859,10 @@ video {
   height: 100vh;
 }
 
+.h-2 {
+  height: 0.5rem;
+}
+
 .min-h-\[80\%\] {
   min-height: 80%;
 }
@@ -1470,6 +1474,10 @@ video {
 
 .opacity-100 {
   opacity: 1;
+}
+
+.opacity-50 {
+  opacity: 0.5;
 }
 
 .shadow {
