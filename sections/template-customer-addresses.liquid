@@ -341,7 +341,9 @@
                     
                     let form = document.querySelector(`form[action="${url}"]`);
 
-                    form.submit();
+                    let confirmDelete = window.confirm('Are you sure you want to delete this address?');
+
+                    if(confirmDelete) form.submit();
                 });
             });
         }
