@@ -609,6 +609,10 @@ video {
   top: 1.25rem;
 }
 
+.bottom-20 {
+  bottom: 5rem;
+}
+
 .z-10 {
   z-index: 10;
 }
