@@ -334,7 +334,10 @@
             deleteBtns.forEach(button => {
                 button.addEventListener('click', function(e) {
                     let url = this.dataset.url;
-                    console.log(url)
+                    
+                    let form = document.querySelector(`form[action="${url}"]`);
+
+                    console.log(form)
                 });
             });
         }
