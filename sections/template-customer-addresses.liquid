@@ -165,6 +165,10 @@
                                     class="w-full text-xs text-gray-700 border font-medium py-2"
                                     data-url="{{ address.url }}"
                                     data-delete-address
+
+                                    {% if address == customer.default_address %}
+                                        disabled
+                                    {% endif %}
                                 >
                                     Delete
                                 </button>
