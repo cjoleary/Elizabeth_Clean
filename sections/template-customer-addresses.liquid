@@ -161,7 +161,12 @@
 
                             <div class="flex gap-2">
                                 <button x-on:click="address_{{ address.id }} = true" class="w-full text-xs text-white bg-gray-700 hover:bg-gray-900 font-medium py-2">Edit</button>
-                                <button class="w-full text-xs text-gray-700 border font-medium py-2">Delete</button>
+                                <button 
+                                    class="w-full text-xs text-gray-700 border font-medium py-2"
+                                    data-delete-address
+                                >
+                                    Delete
+                                </button>
                             </div>
                         </div>
 
@@ -313,6 +318,11 @@
         constructor() {
             this.initCustomerAddress();
             this.customerAddressesSelector();
+        }
+
+        initDeleteAddressBtns() {
+            const deleteBtns = document.querySelectorAll('button[data-delete-address]');
+            console.log(deleteBtns)
         }
 
         initCustomerAddress() {
