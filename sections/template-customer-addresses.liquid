@@ -171,7 +171,7 @@
                             </div>
 
                             <form method="post" action="{{ address.url }}">
-
+                                <input type="hidden" name="_method" value="delete">
                             </form>
                         </div>
 
@@ -337,7 +337,7 @@
                     
                     let form = document.querySelector(`form[action="${url}"]`);
 
-                    console.log(form)
+                    form.submit();
                 });
             });
         }
