@@ -323,7 +323,14 @@
 
         initDeleteAddressBtns() {
             const deleteBtns = document.querySelectorAll('button[data-delete-address]');
-            console.log(deleteBtns)
+
+            if( deleteBtns.length < 1 ) return;
+
+            deleteBtns.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    console.log('delete meeeeeee')
+                });
+            });
         }
 
         initCustomerAddress() {
