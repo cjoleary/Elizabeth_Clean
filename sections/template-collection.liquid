@@ -20,22 +20,22 @@
 </div>
 
 {% schema %}
+{
+  "name": "Template Collection",
+  "settings": [
     {
-        "name": "Template Collection",
-        "settings": [
-            {
-                "type": "number",
-                "id": "num_per_page",
-                "default": 6,
-                "label": "Number of products per page"
-            },
-            {
-                "type": "checkbox",
-                "id": "show_product_vendor",
-                "label": "Show product vendor",
-                "default": true,
-                "info": "Show the name of the product vendor in the product card"
-            }
-        ]
+      "type": "number",
+      "id": "num_per_page",
+      "default": 6,
+      "label": "Number of products per page"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_vendor",
+      "label": "Show product vendor",
+      "default": true,
+      "info": "Show the name of the product vendor in the product card"
     }
+  ]
+}
 {% endschema %}
