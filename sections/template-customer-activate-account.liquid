@@ -9,7 +9,14 @@
             {% form 'activate_customer_password' %}
                 <div>
                     <label for="password">Password</label>
-                    <input type="password" name="customer[password]" id="password">
+                    <input 
+                        type="password" 
+                        name="customer[password]" 
+                        id="password"
+                        placeholder="New password"
+                        class="relative block w-full px-3 py-2 border placeholder-gray-300 text-gray-700"
+                        autocomplete="new-password"
+                    >
                 </div>
             {% endform %}
         </div>
