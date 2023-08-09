@@ -9,7 +9,7 @@
                         <div class="bg-white shadow-xl rounded-lg overflow-hidden">
                             {% if article.image %}
                                 <a href="{{ article.url }}">
-                                    <img class="w-full h-80 object-cover" src="{{ article.image | img_url: 'medium' }}" alt="{{ article.image.alt }}">
+                                    <img class="w-full h-80 object-cover" src="{{ article.image | image_url: width: 240, height: 240 }}" alt="{{ article.image.alt }}">
                                 </a>
                             {% else %}
                                 <a href="{{ article.url }}">
@@ -44,24 +44,24 @@
 
 
 {% schema %}
+{
+  "name": "Blog",
+  "settings": [
     {
-        "name": "Blog",
-        "settings": [
-            {
-                "type": "range",
-                "id": "number_of_blog_posts",
-                "step": 1,
-                "min": 1,
-                "max": 6,
-                "label": "Blog posts per page",
-                "default": 3
-            },
-            {
-                "type": "text",
-                "id": "blog_read_more",
-                "label": "Read more label",
-                "default": "Read more"
-            }
-        ]
+      "type": "range",
+      "id": "number_of_blog_posts",
+      "step": 1,
+      "min": 1,
+      "max": 6,
+      "label": "Blog posts per page",
+      "default": 3
+    },
+    {
+      "type": "text",
+      "id": "blog_read_more",
+      "label": "Read more label",
+      "default": "Read more"
     }
+  ]
+}
 {% endschema %}
