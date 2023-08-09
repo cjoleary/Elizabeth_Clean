@@ -1712,6 +1712,10 @@ video {
     margin-right: 5rem;
   }
 
+  .md\:ml-3 {
+    margin-left: 0.75rem;
+  }
+
   .md\:block {
     display: block;
   }
