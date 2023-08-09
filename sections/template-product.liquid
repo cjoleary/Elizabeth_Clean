@@ -226,9 +226,7 @@
 </script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        try {
-            const swiper = new Swiper('.swiper', {
+const swiper = new Swiper('.swiper', {
                 direction: 'horizontal',
                 pagination: {
                     el: '.swiper-pagination'
@@ -238,10 +236,6 @@
                     nextEl: '.swiper-button-next'
                 }
             });
-        } catch(e) {
-            console.log('SwiperJS is not defined');
-        }
-    });
 </script>
 
 {% schema %}
