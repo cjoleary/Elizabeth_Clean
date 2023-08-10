@@ -4,8 +4,17 @@ class ProductModel extends HTMLElement {
         this.openModelModal();
     }
 
+    getMediaID() {
+        
+    }
+
+    getModal() {
+
+    }
+
     openModelModal() {
-        console.log('hello propduct model')
+        const mediaID = this.getMediaID();
+        const modal = this.getModal();
     }
 }
 
