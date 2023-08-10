@@ -8,3 +8,5 @@ class ProductModel extends HTMLElement {
         console.log('hello propduct model')
     }
 }
+
+const productModal = customElements.define('product-model');
