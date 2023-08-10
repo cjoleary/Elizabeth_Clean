@@ -9,4 +9,4 @@ class ProductModel extends HTMLElement {
     }
 }
 
-const productModal = customElements.define('product-model');
+const productModal = customElements.define('product-model', ProductModel);
