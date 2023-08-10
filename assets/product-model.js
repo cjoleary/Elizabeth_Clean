@@ -20,7 +20,9 @@ class ProductModel extends HTMLElement {
         const mediaID = this.getMediaID();
         const modal = this.getModal();
 
-        console.log(modal);
+        if(!mediaID) return;
+
+        const openModalBtn = document.getElementById(`productModelOpenBtn_${mediaID}`);
     }
 }
 
