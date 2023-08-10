@@ -23,6 +23,8 @@ class ProductModel extends HTMLElement {
         if(!mediaID) return;
 
         const openModalBtn = document.getElementById(`productModelOpenBtn_${mediaID}`);
+
+        openModalBtn.addEventListener('click', () => console.log('click click'))
     }
 }
 
