@@ -5,7 +5,9 @@ class ProductModel extends HTMLElement {
     }
 
     getMediaID() {
-        
+        const id = this.getAttribute('data-media-id');
+
+        return id;
     }
 
     getModal() {
@@ -15,6 +17,8 @@ class ProductModel extends HTMLElement {
     openModelModal() {
         const mediaID = this.getMediaID();
         const modal = this.getModal();
+
+        console.log(mediaID)
     }
 }
 
