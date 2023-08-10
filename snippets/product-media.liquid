@@ -22,8 +22,12 @@
                     >
                 </button>
             </div>
+
+            <template>
+                {{ media | model_viewer_tag: }}
+            </template>
         </product-model>    
     {% else %}
-        {{ media | media_tag }}
+        {{ media | model_viewer_tag: reveal: 'interaction' }}
         
 {% endcase %}
