@@ -24,7 +24,13 @@ class ProductModel extends HTMLElement {
 
         const openModalBtn = document.getElementById(`productModelOpenBtn_${mediaID}`);
 
-        openModalBtn.addEventListener('click', () => console.log('click click'))
+        openModalBtn.addEventListener('click', function(e) {
+            modal.querySelector('#body').innerHTML = '';
+
+            const template = document.querySelector(`product-modal[data-media-id="${mediaID}"] > template`);
+
+            console.log(template)
+        });
     }
 }
 
