@@ -6,13 +6,11 @@ class ProductModel extends HTMLElement {
 
     getMediaID() {
         const id = this.getAttribute('data-media-id');
-
         return id;
     }
 
     getModal() {
         const modal = document.getElementById('productModelModal');
-
         return modal;
     }
 
