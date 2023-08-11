@@ -15,14 +15,13 @@ class ProductModel extends HTMLElement {
         const desktopOpenModalBtn = document.querySelector(`#productModelOpenBtn_${mediaID}_desktop`);
 
         const openModalBtns = [mobileOpenModalBtn, desktopOpenModalBtn];
-        const modalBody = modal.querySelector('#body');
-        const template = document.querySelector(`product-model[data-media-id="${mediaID}"] > template`);
-        console.log(template);
-        const clone = template.content.cloneNode(true);
-        // console.log(clone);
 
         openModalBtns.forEach( btn => {
-            btn.addEventListener('click', function(e) {    
+            btn.addEventListener('click', function(e) {
+                const modalBody = modal.querySelector('#body');
+                const template = document.querySelector(`product-model[data-media-id="${mediaID}"] > template`);
+                const clone = template.content.cloneNode(true);
+    
                 modalBody.innerHTML = '';
                 modalBody.appendChild(clone);
             });
