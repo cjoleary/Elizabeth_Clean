@@ -1,5 +1,3 @@
-console.log('product-model js is loaded')
-
 class ProductModel extends HTMLElement {
     constructor() {
         super();
