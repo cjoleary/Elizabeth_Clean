@@ -2,7 +2,7 @@ class ProductModel extends HTMLElement {
     constructor() {
         super();
         this.openModelModal();
-        this.addEventListener('click', this.loadContent);
+        // this.addEventListener('click', this.loadContent);
     }
 
     openModelModal() {
@@ -29,22 +29,22 @@ class ProductModel extends HTMLElement {
         });
     }
 
-    loadContent() {
-        Shopify.loadFeatures(
-            [
-                {
-                    name: 'model-viewer-ui',
-                    version: '1.0',
-                    onLoad: this.setupModelViewerUI.bind(this)
-                }
-            ]
-        );
-    }
+    // loadContent() {
+    //     Shopify.loadFeatures(
+    //         [
+    //             {
+    //                 name: 'model-viewer-ui',
+    //                 version: '1.0',
+    //                 onLoad: this.setupModelViewerUI.bind(this)
+    //             }
+    //         ]
+    //     );
+    // }
 
-    setupModelViewerUI(errors) {
-        if(errors) return;
-        this.modelViewerUI = new Shopify.ModelViewerUI(document.querySelector('model-viewer'));
-    }
+    // setupModelViewerUI(errors) {
+    //     if(errors) return;
+    //     this.modelViewerUI = new Shopify.ModelViewerUI(document.querySelector('model-viewer'));
+    // }
 }
 
 const productModal = customElements.define('product-model', ProductModel);
