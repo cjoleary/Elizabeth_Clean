@@ -36,9 +36,9 @@
                 </button>
             </div>
 
-            <div id="model-viewer">
+            <template>
                 {{ media | model_viewer_tag }}
-            </div>
+            </template>
         </product-model>    
     {% else %}
         {{ media | media_tag }}

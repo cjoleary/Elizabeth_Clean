@@ -19,7 +19,7 @@ class ProductModel extends HTMLElement {
         openModalBtns.forEach( btn => {
             btn.addEventListener('click', function(e) {
                 const modalBody = modal.querySelector('#body');
-                const template = document.querySelector(`product-model[data-media-id="${mediaID}"] > #model-viewer`);
+                const template = document.querySelector(`product-model[data-media-id="${mediaID}"] > template`);
                 const clone = template.content.cloneNode(true);
     
                 modalBody.innerHTML = '';
