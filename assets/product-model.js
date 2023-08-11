@@ -16,6 +16,8 @@ class ProductModel extends HTMLElement {
             const modalBody = modal.querySelector('#body');
             const template = document.querySelector(`product-model[data-media-id="${mediaID}"] > template`);
             const clone = template.content.cloneNode(true);
+            const modelViewer = modalBody.querySelector('model-viewer');
+            console.log(modelViewer);
 
             modalBody.innerHTML = '';
             modalBody.appendChild(clone);
