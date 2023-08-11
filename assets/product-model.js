@@ -20,6 +20,7 @@ class ProductModel extends HTMLElement {
             btn.addEventListener('click', function(e) {
                 const modalBody = modal.querySelector('#body');
                 const template = document.querySelector(`product-model[data-media-id="${mediaID}"] > template`);
+                console.log(template);
                 const clone = template.content.cloneNode(true);
     
                 modalBody.innerHTML = '';
