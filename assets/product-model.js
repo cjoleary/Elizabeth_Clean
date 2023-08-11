@@ -37,7 +37,6 @@ class ProductModel extends HTMLElement {
 
             modalBody.innerHTML = '';
             modalBody.appendChild(clone);
-            modalBody.querySelector("#body > model-viewer").setAttribute("reveal", "auto");
         });
     }
 }
