@@ -291,9 +291,9 @@
 
     function breakpointChecker() {
         if(breakpoint.matches === true) {
-            productMedias.appendChild(desktopMedia);
+            productMedias.innerHTML = desktopMedia;
         } else {
-            productMedias.appendChild(mobileMedia);
+            productMedias.innerHTML = mobileMedia;
         }
     }
 
