@@ -15,7 +15,7 @@ class ProductModel extends HTMLElement {
         openModalBtn.addEventListener('click', function(e) {
             const modalBody = modal.querySelector('#body');
 
-            // modalBody.innerHTML = '';
+            modalBody.innerHTML = '';
 
             const template = document.querySelector(`product-model[data-media-id="${mediaID}"] > template`);
 
