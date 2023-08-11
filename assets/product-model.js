@@ -19,7 +19,7 @@ class ProductModel extends HTMLElement {
             const clone = template.content.cloneNode(true);
 
             modalBody
-                .innerHTML = ''
+                .innerHTML('')
                 .appendChild(clone);
             modelViewer.setAttribute('reveal', 'auto');
         });
