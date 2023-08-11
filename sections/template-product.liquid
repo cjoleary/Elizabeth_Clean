@@ -242,20 +242,6 @@
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         breakpointChecker();
-        try {
-            const swiper = new Swiper('.swiper', {
-                direction: 'horizontal',
-                pagination: {
-                    el: '.swiper-pagination'
-                },
-                navigation: {
-                    prevEl: '.swiper-button-prev',
-                    nextEl: '.swiper-button-next'
-                }
-            });
-        } catch(e) {
-            console.log('SwiperJS is not defined');
-        }
     });
 
     const breakpoint = window.matchMedia( '(min-width:768px)' );
@@ -294,6 +280,21 @@
             productMedias.innerHTML = desktopMedia;
         } else {
             productMedias.innerHTML = mobileMedia;
+
+            try {
+                const swiper = new Swiper('.swiper', {
+                    direction: 'horizontal',
+                    pagination: {
+                        el: '.swiper-pagination'
+                    },
+                    navigation: {
+                        prevEl: '.swiper-button-prev',
+                        nextEl: '.swiper-button-next'
+                    }
+                });
+            } catch(e) {
+                console.log('SwiperJS is not defined');
+            }
         }
     }
 
