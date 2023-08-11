@@ -15,14 +15,12 @@ class ProductModel extends HTMLElement {
         openModalBtn.addEventListener('click', function(e) {
             const modalBody = modal.querySelector('#body');
             const modelViewer = modalBody.querySelector('model-viewer');
-
-            modalBody.innerHTML = '';
-
             const template = document.querySelector(`product-model[data-media-id="${mediaID}"] > template`);
-
             const clone = template.content.cloneNode(true);
 
-            modalBody.appendChild(clone);
+            modalBody
+                .innerHTML = ''
+                .appendChild(clone);
             modelViewer.setAttribute('reveal', 'auto');
         });
     }
