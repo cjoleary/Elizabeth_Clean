@@ -12,7 +12,7 @@
         <product-model data-media-id="{{ media.id }}">
             <div>
                 <button id="productModelOpenBtn_{{ media.id }}_mobile"
-                x-on:click="productModalOpen = true" class="product-model-open-btn w-full h-full bg-gray-100 border relative md:hidden">
+                x-on:click="productModalOpen = true" class="w-full h-full bg-gray-100 border relative md:hidden">
                     <span class="border bg-gray-100 absolute top-[50%] left[50%] transform -translate-x-1/2 -translate-y-1/2">
                         {% render 'icon-model-viewer' %}
                     </span>
@@ -24,7 +24,7 @@
                 </button>
 
                 <button id="productModelOpenBtn_{{ media.id }}_desktop"
-                x-on:click="productModalOpen = true" class="product-model-open-btn w-full h-full bg-gray-100 border relative hidden md:block">
+                x-on:click="productModalOpen = true" class="w-full h-full bg-gray-100 border relative hidden md:block">
                     <span class="border bg-gray-100 absolute top-[50%] left[50%] transform -translate-x-1/2 -translate-y-1/2">
                         {% render 'icon-model-viewer' %}
                     </span>
