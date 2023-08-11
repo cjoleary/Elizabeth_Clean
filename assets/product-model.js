@@ -5,23 +5,6 @@ class ProductModel extends HTMLElement {
         this.addEventListener('click', this.loadContent);
     }
 
-    loadContent() {
-        Shopify.loadFeatures(
-            [
-                {
-                    name: 'model-viewer-ui',
-                    version: '1.0',
-                    onLoad: this.setupModelViewerUI.bind(this)
-                }
-            ]
-        );
-    }
-
-    setupModelViewerUI(errors) {
-        if(errors) return;
-        this.modelViewerUI = new Shopify.ModelViewerUI(document.querySelector('model-viewer'));
-    }
-
     openModelModal() {
         const mediaID = this.getAttribute('data-media-id');
         const modal = document.getElementById('productModelModal');
@@ -44,6 +27,23 @@ class ProductModel extends HTMLElement {
                 modalBody.appendChild(clone);
             });
         });
+    }
+
+    loadContent() {
+        Shopify.loadFeatures(
+            [
+                {
+                    name: 'model-viewer-ui',
+                    version: '1.0',
+                    onLoad: this.setupModelViewerUI.bind(this)
+                }
+            ]
+        );
+    }
+
+    setupModelViewerUI(errors) {
+        if(errors) return;
+        this.modelViewerUI = new Shopify.ModelViewerUI(document.querySelector('model-viewer'));
     }
 }
 
