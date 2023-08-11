@@ -28,15 +28,20 @@ class ProductModel extends HTMLElement {
 
         if(!mediaID) return;
 
-        const openModalBtn = document.getElementById(`productModelOpenBtn_${mediaID}`);
+        const openModalBtns = [
+            document.querySelectorAll(`productModelOpenBtn_${mediaID}_mobile`),
+            document.querySelectorAll(`productModelOpenBtn_${mediaID}_desktop`)
+        ];
 
-        openModalBtn.addEventListener('click', function(e) {
-            const modalBody = modal.querySelector('#body');
-            const template = document.querySelector(`product-model[data-media-id="${mediaID}"] > template`);
-            const clone = template.content.cloneNode(true);
-
-            modalBody.innerHTML = '';
-            modalBody.appendChild(clone);
+        openModalBtns.forEach( btn => {
+            btn.addEventListener('click', function(e) {
+                const modalBody = modal.querySelector('#body');
+                const template = document.querySelector(`product-model[data-media-id="${mediaID}"] > template`);
+                const clone = template.content.cloneNode(true);
+    
+                modalBody.innerHTML = '';
+                modalBody.appendChild(clone);
+            });
         });
     }
 }
