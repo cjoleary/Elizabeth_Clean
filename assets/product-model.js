@@ -16,6 +16,12 @@ class ProductModel extends HTMLElement {
             const modalBody = modal.querySelector('#body');
             const template = document.querySelector(`product-model[data-media-id="${mediaID}"] > template`);
             const clone = template.content.cloneNode(true);
+<<<<<<< HEAD
+
+            modalBody.innerHTML = '';
+            modalBody.appendChild(clone);
+            modalBody.querySelector('model-viewer').setAttribute('reveal', 'auto');
+=======
             const modelViewer = modalBody.querySelector('model-viewer');
             console.log(modelViewer);
 
@@ -23,6 +29,7 @@ class ProductModel extends HTMLElement {
             modalBody.appendChild(clone).then(() => {
                 modelViewer.setAttribute('reveal', 'auto');
             });
+>>>>>>> 45c88eb58599c83fc51f5c1783c12ea1dbc54319
         });
     }
 }
