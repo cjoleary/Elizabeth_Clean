@@ -20,8 +20,9 @@ class ProductModel extends HTMLElement {
             console.log(modelViewer);
 
             modalBody.innerHTML = '';
-            modalBody.appendChild(clone);
-            modelViewer.setAttribute('reveal', 'auto');
+            modalBody.appendChild(clone).then(() => {
+                modelViewer.setAttribute('reveal', 'auto');
+            });
         });
     }
 }
