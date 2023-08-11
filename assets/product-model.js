@@ -19,7 +19,7 @@ class ProductModel extends HTMLElement {
 
             modalBody.innerHTML = '';
             modalBody.appendChild(clone);
-            modalBody.querySelector('model-viewer').setAttribute('reveal', 'auto');
+            // modalBody.querySelector('model-viewer').setAttribute('reveal', 'auto');
         });
     }
 }
