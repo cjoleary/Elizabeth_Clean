@@ -984,6 +984,10 @@ video {
   resize: none;
 }
 
+.resize {
+  resize: both;
+}
+
 .list-decimal {
   list-style-type: decimal;
 }
