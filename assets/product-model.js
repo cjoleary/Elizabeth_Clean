@@ -28,10 +28,10 @@ class ProductModel extends HTMLElement {
 
         if(!mediaID) return;
 
-        const openModalBtns = [
-            document.querySelectorAll(`productModelOpenBtn_${mediaID}_mobile`),
-            document.querySelectorAll(`productModelOpenBtn_${mediaID}_desktop`)
-        ];
+        const mobileOpenModalBtn = document.querySelector(`#productModelOpenBtn_${mediaID}_mobile`);
+        const desktopOpenModalBtn = document.querySelector(`#productModelOpenBtn_${mediaID}_desktop`);
+
+        const openModalBtns = [mobileOpenModalBtn, desktopOpenModalBtn];
 
         openModalBtns.forEach( btn => {
             console.log(btn);
