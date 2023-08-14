@@ -16,7 +16,7 @@ class ProductModel extends HTMLElement {
         const openModalBtn = document.querySelector(`#openModalBtn_${mediaID}_${screenSize}`);
 
         openModalBtn.addEventListener('click', function(e) {
-            // e.stopImmediatePropagation();
+            e.stopImmediatePropagation();
             const button = this;
             const screenSize = button.getAttribute('data-screen-size');
             const mediaID = button.getAttribute('data-media-id');
@@ -53,6 +53,7 @@ class ProductModel extends HTMLElement {
     setupModelViewerUI(errors) {
         if(errors) return;
         const modelViewer = document.querySelectorAll('model-viewer');
+        console.log(modelViewer);
         this.modelViewerUI = new Shopify.ModelViewerUI(modelViewer);
     }
 }
