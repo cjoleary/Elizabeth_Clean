@@ -25,7 +25,6 @@ class ProductModel extends HTMLElement {
     }
 
     openModelModal() {
-        console.log('openModelModal() {')
         const mediaID = this.getAttribute('data-media-id');
         const screenSize = this.getAttribute('data-screen-size');
         const modal = document.getElementById('productModelModal');
