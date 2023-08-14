@@ -45,6 +45,9 @@ class ProductModel extends HTMLElement {
 
             modalBody.innerHTML = '';
             modalBody.appendChild(clone);
+
+            const modelViewer = document.querySelectorAll('model-viewer');
+            console.log(modelViewer);
         });
     }
 }
