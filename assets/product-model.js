@@ -16,7 +16,7 @@ class ProductModel extends HTMLElement {
         const openModalBtn = document.querySelector(`#openModalBtn_${mediaID}_${screenSize}`);
 
         openModalBtn.addEventListener('click', function(e) {
-            e.stopImmediatePropagation();
+            // e.stopImmediatePropagation();
             const button = this;
             const screenSize = button.getAttribute('data-screen-size');
             const mediaID = button.getAttribute('data-media-id');
