@@ -5,25 +5,6 @@ class ProductModel extends HTMLElement {
         this.addEventListener('click', this.loadContent);
     }
 
-    loadContent() {
-        Shopify.loadFeatures(
-            [
-                {
-                    name: 'model-viewer-ui',
-                    version: '1.0',
-                    onLoad: this.setupModelViewerUI.bind(this)
-                }
-            ]
-        );
-    }
-
-    setupModelViewerUI(errors) {
-        const modelViewer = document.querySelectorAll('model-viewer');
-        console.log(modelViewer);
-        if(errors) return;
-        this.modelViewerUI = new Shopify.ModelViewerUI(modelViewer);
-    }
-
     openModelModal() {
         const mediaID = this.getAttribute('data-media-id');
         const screenSize = this.getAttribute('data-screen-size');
@@ -48,6 +29,25 @@ class ProductModel extends HTMLElement {
             const modelViewer = document.querySelectorAll('model-viewer');
             console.log(modelViewer);
         });
+    }
+
+    loadContent() {
+        Shopify.loadFeatures(
+            [
+                {
+                    name: 'model-viewer-ui',
+                    version: '1.0',
+                    onLoad: this.setupModelViewerUI.bind(this)
+                }
+            ]
+        );
+    }
+
+    setupModelViewerUI(errors) {
+        const modelViewer = document.querySelectorAll('model-viewer');
+        console.log(modelViewer);
+        if(errors) return;
+        this.modelViewerUI = new Shopify.ModelViewerUI(modelViewer);
     }
 }
 
