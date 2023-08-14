@@ -18,7 +18,9 @@ class ProductModel extends HTMLElement {
         const openModalBtns = [mobileOpenModalBtn, desktopOpenModalBtn];
 
         openModalBtns.forEach( btn => {
+            console.log('openModalBtns.forEach( btn => {');
             btn.addEventListener('click', function(e) {
+                console.log("btn.addEventListener('click', function(e) {");
                 e.stopImmediatePropagation();
                 const button = this;
                 const screenSize = button.getAttribute('data-screen-size');
