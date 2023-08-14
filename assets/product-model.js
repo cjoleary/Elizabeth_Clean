@@ -23,7 +23,7 @@ class ProductModel extends HTMLElement {
                 const clone = template.content.cloneNode(true);
     
                 modalBody.innerHTML = '';
-                modalBody.appendChild(clone);
+                modalBody.innerHTML = clone;
             });
         });
     }
