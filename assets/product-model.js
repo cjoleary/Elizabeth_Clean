@@ -9,7 +9,7 @@ class ProductModel extends HTMLElement {
         const mediaID = this.getAttribute('data-media-id');
         const modal = document.getElementById('productModelModal');
 
-        if(!mediaID) return;
+        // if(!mediaID) return;
 
         const mobileOpenModalBtn = document.querySelector(`#productModelOpenBtn_${mediaID}_mobile`);
         const desktopOpenModalBtn = document.querySelector(`#productModelOpenBtn_${mediaID}_desktop`);
