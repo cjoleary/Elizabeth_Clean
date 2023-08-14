@@ -19,9 +19,12 @@ class ProductModel extends HTMLElement {
         openModalBtns.forEach( btn => {
             btn.addEventListener('click', function(e) {
                 e.stopImmediatePropagation();
+                const button = this;
+                const screenSize = this.getAttribute('data-screen-size')
+                const mediaID = this.getAttribute('data-media-id')
                 const modalBody = modal.querySelector('#body');
-                const template = document.querySelector(`template[data-model-viewer-template='${mediaID}_desktop']`);
-                // console.log(template);
+                const template = document.querySelector(`[data-model-viewer-template][data-screen-size="${screenSize}"][data-media-id="${mediaID}"]`);
+                console.log(template);
                 const clone = template.content.cloneNode(true);
     
                 modalBody.innerHTML = '';
