@@ -11,6 +11,14 @@
     {% when 'model' %}
         <product-model data-media-id="{{ media.id }}">
             <div>
+                <template
+                    data-model-viewer-template
+                    data-media-id="{{ media.id }}"
+                    data-screen-size="{{ screen_size }}"
+                >
+                    {{ media | model_viewer_tag }}
+                </template>
+                
                 <button
                     id="productModelOpenBtn_{{ media.id }}_mobile"
                     x-on:click="productModalOpen = true"
@@ -45,14 +53,6 @@
                     >
                 </button>
             </div>
-
-            <template
-                data-model-viewer-template
-                data-media-id="{{ media.id }}"
-                data-screen-size="{{ screen_size }}"
-            >
-                {{ media | model_viewer_tag }}
-            </template>
         </product-model>    
     {% else %}
         {{ media | media_tag }}
