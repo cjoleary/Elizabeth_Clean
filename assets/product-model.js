@@ -42,6 +42,8 @@ class ProductModel extends HTMLElement {
 
     setupModelViewerUI(errors) {
         if(errors) return;
+        const modelViewer = document.querySelector('model-viewer');
+        console.log(modelViewer);
         this.modelViewerUI = new Shopify.ModelViewerUI(document.querySelector('model-viewer'));
     }
 }
