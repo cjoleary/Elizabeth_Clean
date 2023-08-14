@@ -20,8 +20,8 @@ class ProductModel extends HTMLElement {
             btn.addEventListener('click', function(e) {
                 e.stopImmediatePropagation();
                 const button = this;
-                const screenSize = button.getAttribute('data-screen-size')
-                const mediaID = button.getAttribute('data-media-id')
+                const screenSize = button.getAttribute('data-screen-size');
+                const mediaID = button.getAttribute('data-media-id');
                 const modalBody = modal.querySelector('#body');
                 const template = document.querySelector(`[data-model-viewer-template][data-screen-size="${screenSize}"][data-media-id="${mediaID}"]`);
                 console.log(template);
