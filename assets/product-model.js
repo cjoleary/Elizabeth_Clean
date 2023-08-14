@@ -15,30 +15,27 @@ class ProductModel extends HTMLElement {
 
         const openModalBtn = document.querySelector(`#openModalBtn_${mediaID}_${screenSize}`);
 
-        openModalBtns.forEach( btn => {
-            console.log('openModalBtns.forEach( btn => {');
-            btn.addEventListener('click', function(e) {
-                console.log("btn.addEventListener('click', function(e) {");
-                e.stopImmediatePropagation();
-                const button = this;
-                const screenSize = button.getAttribute('data-screen-size');
-                const mediaID = button.getAttribute('data-media-id');
-                const modalBody = modal.querySelector('#body');
-                const template = document.querySelector(`[data-model-viewer-template][data-screen-size="${screenSize}"][data-media-id="${mediaID}"]`);
-                const clone = template.content.cloneNode(true);
+        openModalBtn.addEventListener('click', function(e) {
+            console.log("btn.addEventListener('click', function(e) {");
+            e.stopImmediatePropagation();
+            const button = this;
+            const screenSize = button.getAttribute('data-screen-size');
+            const mediaID = button.getAttribute('data-media-id');
+            const modalBody = modal.querySelector('#body');
+            const template = document.querySelector(`[data-model-viewer-template][data-screen-size="${screenSize}"][data-media-id="${mediaID}"]`);
+            const clone = template.content.cloneNode(true);
 
-                console.log({
-                    button,
-                    screenSize,
-                    mediaID,
-                    modalBody,
-                    template,
-                    clone
-                });
-    
-                modalBody.innerHTML = '';
-                modalBody.appendChild(clone);
+            console.log({
+                button,
+                screenSize,
+                mediaID,
+                modalBody,
+                template,
+                clone
             });
+
+            modalBody.innerHTML = '';
+            modalBody.appendChild(clone);
         });
     }
 
