@@ -35,8 +35,35 @@
 <div x-data="{ productModalOpen: false }">
     <div class="max-w-6xl mx-auto my-8">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-            <div id="product_medias" class="product--medias">
+            <div class="product--medias">
+                <!-- mobile -->
+                <div class="md:hidden">
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            {% for media in product.media %}
+                                <div class="swiper-slide">
+                                    <div class="h-[100vw] overflow-hidden p-2">
+                                        {% render 'product-media', media: media, screen_size: 'mobile' %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
 
+                        <div class="swiper-pagination"></div>
+
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+
+                <!-- desktop -->
+                <div class="hidden md:block">
+                    {% for media in product.media %}
+                        <div class="h-100 overflow-hidden p-2">
+                            {% render 'product-media', media: media, screen_size: 'desktop' %}
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
             <div class="product--information sticky top-5 p-2">
                 {% form 'product', product, id: 'product-form', novalidate: 'novalidate' %}
@@ -241,65 +268,21 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        breakpointChecker();
-    });
-
-    const breakpoint = window.matchMedia( '(min-width:768px)' );
-    const productMedias = document.querySelector('#product_medias');
-    const mobileMedia = `                
-                <div id="mobile_media" class="md:hidden">
-                    <div class="swiper">
-                        <div class="swiper-wrapper">
-                            {% for media in product.media %}
-                                <div class="swiper-slide">
-                                    <div class="h-[100vw] overflow-hidden p-2">
-                                        {% render 'product-media', media: media %}
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        </div>
-
-                        <div class="swiper-pagination"></div>
-
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
-                    </div>
-                </div>`;
-    const desktopMedia = `
-                <div id="desktop_media" class="hidden md:block">
-                    {% for media in product.media %}
-                        <div class="h-100 overflow-hidden p-2">
-                            {% render 'product-media', media: media %}
-                        </div>
-                    {% endfor %}
-                </div>
-    `;
-
-    function breakpointChecker() {
-        if(breakpoint.matches === true) {
-            productMedias.innerHTML = desktopMedia;
-        } else {
-            productMedias.innerHTML = mobileMedia;
-
-            try {
-                const swiper = new Swiper('.swiper', {
-                    direction: 'horizontal',
-                    pagination: {
-                        el: '.swiper-pagination'
-                    },
-                    navigation: {
-                        prevEl: '.swiper-button-prev',
-                        nextEl: '.swiper-button-next'
-                    }
-                });
-            } catch(e) {
-                console.log('SwiperJS is not defined');
-            }
+        try {
+            const swiper = new Swiper('.swiper', {
+                direction: 'horizontal',
+                pagination: {
+                    el: '.swiper-pagination'
+                },
+                navigation: {
+                    prevEl: '.swiper-button-prev',
+                    nextEl: '.swiper-button-next'
+                }
+            });
+        } catch(e) {
+            console.log('SwiperJS is not defined');
         }
-    }
-
-    window.addEventListener('resize', breakpointChecker);
-
+    });
 </script>
 
 {% schema %}

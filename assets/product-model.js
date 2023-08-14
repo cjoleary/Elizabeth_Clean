@@ -5,6 +5,40 @@ class ProductModel extends HTMLElement {
         this.addEventListener('click', this.loadContent);
     }
 
+    openModelModal() {
+        console.log('openModelModal() {')
+        const mediaID = this.getAttribute('data-media-id');
+        const screenSize = this.getAttribute('data-screen-size');
+        const modal = document.getElementById('productModelModal');
+
+        if(!mediaID) return;
+
+        const openModalBtn = document.querySelector(`#openModalBtn_${mediaID}_${screenSize}`);
+
+        openModalBtn.addEventListener('click', function(e) {
+            console.log("btn.addEventListener('click', function(e) {");
+            e.stopImmediatePropagation();
+            const button = this;
+            const screenSize = button.getAttribute('data-screen-size');
+            const mediaID = button.getAttribute('data-media-id');
+            const modalBody = modal.querySelector('#body');
+            const template = document.querySelector(`[data-model-viewer-template][data-screen-size="${screenSize}"][data-media-id="${mediaID}"]`);
+            const clone = template.content.cloneNode(true);
+
+            console.log({
+                button,
+                screenSize,
+                mediaID,
+                modalBody,
+                template,
+                clone
+            });
+
+            modalBody.innerHTML = '';
+            modalBody.appendChild(clone);
+        });
+    }
+
     loadContent() {
         Shopify.loadFeatures(
             [
@@ -19,25 +53,9 @@ class ProductModel extends HTMLElement {
 
     setupModelViewerUI(errors) {
         if(errors) return;
-        this.modelViewerUI = new Shopify.ModelViewerUI(document.querySelector('model-viewer'));
-    }
-
-    openModelModal() {
-        const mediaID = this.getAttribute('data-media-id');
-        const modal = document.getElementById('productModelModal');
-
-        if(!mediaID) return;
-
-        const openModalBtn = document.getElementById(`productModelOpenBtn_${mediaID}`);
-
-        openModalBtn.addEventListener('click', function(e) {
-            const modalBody = modal.querySelector('#body');
-            const template = document.querySelector(`product-model[data-media-id="${mediaID}"] > template`);
-            const clone = template.content.cloneNode(true);
-
-            modalBody.innerHTML = '';
-            modalBody.appendChild(clone);
-        });
+        const modelViewer = document.querySelectorAll('model-viewer');
+        console.log(modelViewer);
+        this.modelViewerUI = new Shopify.ModelViewerUI(modelViewer);
     }
 }
 
