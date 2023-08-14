@@ -43,15 +43,6 @@ class ProductModel extends HTMLElement {
             const template = document.querySelector(`[data-model-viewer-template][data-screen-size="${screenSize}"][data-media-id="${mediaID}"]`);
             const clone = template.content.cloneNode(true);
 
-            console.log({
-                button,
-                screenSize,
-                mediaID,
-                modalBody,
-                template,
-                clone
-            });
-
             modalBody.innerHTML = '';
             modalBody.appendChild(clone);
         });
