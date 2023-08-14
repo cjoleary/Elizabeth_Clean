@@ -8,14 +8,12 @@ class ProductModel extends HTMLElement {
     openModelModal() {
         console.log('openModelModal() {')
         const mediaID = this.getAttribute('data-media-id');
+        const screenSize = this.getAttribute('data-screen-size');
         const modal = document.getElementById('productModelModal');
 
         if(!mediaID) return;
 
-        const mobileOpenModalBtn = document.querySelector(`#productModelOpenBtn_${mediaID}_mobile`);
-        const desktopOpenModalBtn = document.querySelector(`#productModelOpenBtn_${mediaID}_desktop`);
-
-        const openModalBtns = [mobileOpenModalBtn, desktopOpenModalBtn];
+        const openModalBtn = document.querySelector(`#openModalBtn_${mediaID}_${screenSize}`);
 
         openModalBtns.forEach( btn => {
             console.log('openModalBtns.forEach( btn => {');
