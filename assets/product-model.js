@@ -6,7 +6,6 @@ class ProductModel extends HTMLElement {
     }
 
     openModelModal() {
-        console.log('openModelModal() {')
         const mediaID = this.getAttribute('data-media-id');
         const screenSize = this.getAttribute('data-screen-size');
         const modal = document.getElementById('productModelModal');
@@ -16,23 +15,13 @@ class ProductModel extends HTMLElement {
         const openModalBtn = document.querySelector(`#openModalBtn_${mediaID}_${screenSize}`);
 
         openModalBtn.addEventListener('click', function(e) {
-            console.log("btn.addEventListener('click', function(e) {");
-            e.stopImmediatePropagation();
+            e.preventDefault();
             const button = this;
             const screenSize = button.getAttribute('data-screen-size');
             const mediaID = button.getAttribute('data-media-id');
             const modalBody = modal.querySelector('#body');
             const template = document.querySelector(`[data-model-viewer-template][data-screen-size="${screenSize}"][data-media-id="${mediaID}"]`);
             const clone = template.content.cloneNode(true);
-
-            console.log({
-                button,
-                screenSize,
-                mediaID,
-                modalBody,
-                template,
-                clone
-            });
 
             modalBody.innerHTML = '';
             modalBody.appendChild(clone);
@@ -52,9 +41,9 @@ class ProductModel extends HTMLElement {
     }
 
     setupModelViewerUI(errors) {
-        if(errors) return;
-        const modelViewer = document.querySelectorAll('model-viewer');
+        const modelViewer = document.querySelectorAll('model-viewer')[0];
         console.log(modelViewer);
+        if(errors) return;
         this.modelViewerUI = new Shopify.ModelViewerUI(modelViewer);
     }
 }
