@@ -18,9 +18,10 @@ class ProductModel extends HTMLElement {
 
         openModalBtns.forEach( btn => {
             btn.addEventListener('click', function(e) {
+                console.log(this);
                 const modalBody = modal.querySelector('#body');
                 const template = document.querySelector(`template[data-model-viewer-template='${mediaID}_desktop']`);
-                console.log(template);
+                // console.log(template);
                 const clone = template.content.cloneNode(true);
     
                 modalBody.innerHTML = '';
