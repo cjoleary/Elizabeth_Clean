@@ -30,7 +30,7 @@
                                 <td class="py-4 px-2 flex flex-col justify-center">
                                     <a data-cy="cart-product-title" href="{{ item.url }}" class="my-1">{{ item.product.title | truncatewords: 5, '...' }}</a>
                                     <span class="text-sm text-gray-500 my-1">{{ item.variant.title }}</span>
-                                    <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="text-sm font-medium text-red-500 my-1">remove</a>
+                                    <a data-cy="remove-item" href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="text-sm font-medium text-red-500 my-1">remove</a>
                                 </td>
                                 <td class="py-4 px-2">
                                     <input data-cy="cart-product-quantity" id="updates_{{ forloop.index }}" type="number" name="updates[]" value={{ item.quantity }} min="1" class="w-20 border p-2">
