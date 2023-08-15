@@ -56,7 +56,7 @@
                         {% for block in section.blocks %}
                             {% case block.type %}
                                 {% when 'subtotal' %}
-                                    <h3 data-cy="cart-subtotal" class="text-xl">Subtotal: <span data-cy="cart-subtotal">{{ cart.total_price | money }}</span></h3>   
+                                    <h3 class="text-xl">Subtotal: <span data-cy="cart-subtotal">{{ cart.total_price | money }}</span></h3>   
                                 {% when 'update_button' %}
                                     <div class="my-2">
                                         <button type="submit" name="update" class="w-full p-3 border border-gray-600 text-gray-600 font-medium hover:bg-gray-600 hover:text-white">Update</button> 
