@@ -6,9 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-
-  ],
+  "keywords": [],
   "author": "C.J. O'Leary",
   "license": "ISC",
   "devDependencies": {
@@ -27,6 +25,7 @@
     "commander": "^4.1.1",
     "concat-map": "^0.0.1",
     "cssesc": "^3.0.0",
+    "cypress": "^12.17.3",
     "didyoumean": "^1.2.2",
     "dlv": "^1.1.3",
     "fast-glob": "^3.2.12",
