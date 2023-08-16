@@ -110,4 +110,4 @@ describe('product page', () => {
     });
     cy.get('body').contains('Your cart is empty');
   });
-})
+});

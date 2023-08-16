@@ -23,3 +23,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+// Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
+//     let themeID = (Cypress.env('THEME_ID) === undefined) ? require('credentials.json').theme_id : Cypress.env('THEME_ID');
+    
+//     let full_path = `${url}?preview_theme_id=${themeID}`;
+
+//     // originalFn is the existing `visit` command that you need to call
+//     // and it will receive whatever you pass in here
+//     return originalFn(full_path, options);
+// });
