@@ -15,12 +15,12 @@
             </div>
 
             <div class="-mr-2 -my-2 ml-3 md:hidden">
-                <button x-on:click="mobileMenuOpen = true" type="button" class="bg-white p-2 inline-flex items-center justify-center focus:outline-none">
+                <button data-cy="open-mobile-nav" x-on:click="mobileMenuOpen = true" type="button" class="bg-white p-2 inline-flex items-center justify-center focus:outline-none">
                     {% render 'icon-menu' %}
                 </button>
             </div>
             <!-- NAVIGATION MENU -->
-            <nav class="hidden md:flex space-x-10">
+            <nav data-cy="desktop-nav" class="hidden md:flex space-x-10">
                 {% for link in main_menu_linklist %}
                     {% if link.links != blank %}
                         {% assign link_handle = link.handle | replace: '-', '_' %}
@@ -79,7 +79,7 @@
             </div>
 
             <!-- MOBILE MENU CONTAINER -->
-            <div x-show="mobileMenuOpen" class="absolute z-10 top-0 inset-x-0 p-2 transform origin-top-left md:hidden">
+            <div data-cy="mobile-nav" x-show="mobileMenuOpen" class="absolute z-10 top-0 inset-x-0 p-2 transform origin-top-left md:hidden">
                 <div class="shadow-lg rounded-lg ring-1 ring-black ring-opacity-5 bg-white w-full">
                     <div class="p-5 divide-y-2 divide-gray-50">
 
@@ -90,7 +90,7 @@
                                 <h1 class="text-lg text-gray-500">{{ section.settings.mobile_menu_title }}</h1>
                             </div>
                             <div class="-mr-2">
-                                <button x-on:click="mobileMenuOpen = false" type="button" class="bg-white rounded-md p-2 text-gray-500">
+                                <button data-cy="close-mobile-nav" x-on:click="mobileMenuOpen = false" type="button" class="bg-white rounded-md p-2 text-gray-500">
                                     {% render 'icon-close' %}
                                 </button>
                             </div>
