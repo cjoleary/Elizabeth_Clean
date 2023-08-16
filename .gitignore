@@ -2,3 +2,5 @@ node_modules
 src
 config.yml
 .DS_store
+/cypress/screenshots
+/cypress/videos
