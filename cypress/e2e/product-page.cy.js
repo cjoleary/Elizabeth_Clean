@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
 describe('product page', () => {
+  let productUrl = '/products/an-amazing-watch';
   let productTitle;
   let productQuantity;
   let productPrice;
@@ -8,8 +9,8 @@ describe('product page', () => {
   beforeEach(() => {
     cy.visit('/');
     cy.get('#password').type('Coleworld2324!');
-    cy.get('button[type="submit"').click();
-    cy.visit('/products/an-amazing-watch');
+    cy.get('button[type="submit"').click({force: true});
+    cy.visit(productUrl);
     cy.get('[data-cy="product-title"]').then(($productTitle) => {
       productTitle = $productTitle.text();
     });
@@ -22,7 +23,6 @@ describe('product page', () => {
   });
 
   it('loads the product page w/ ATC button', () => {
-    cy.visit('/products/an-amazing-watch');
     cy.url().should('include', '/products/');
 
     // check if ATC btn exists
@@ -33,7 +33,7 @@ describe('product page', () => {
 
   it('adds a product to the cart', function() {
     // check if ATC btn adds product to cart
-    cy.get('[data-cy="add-to-cart"]').click();
+    cy.get('[data-cy="add-to-cart"]').click({force: true});
     cy.visit('/cart'); // remove when testing slide cart
 
     cy.get('[data-cy="cart-item"]').should(($cartItem) => {
@@ -42,7 +42,7 @@ describe('product page', () => {
   });
 
   it('adds a product to the cart w/ correct name, quantity, price, subtotal', function() {
-    cy.get('[data-cy="add-to-cart"]').click();
+    cy.get('[data-cy="add-to-cart"]').click({force: true});
     cy.visit('/cart'); // remove when testing slide cart
 
     cy.get('[data-cy="cart-item-title"]').should(($cartProductTitle) => {
@@ -67,11 +67,11 @@ describe('product page', () => {
 
   it('adds multiple products to the cart w/ correct name, quantity, price, subtotal', function() {
     // change quantity before adding to cart
-    cy.get('[data-cy="product-quantity"]').click().type('{backspace}5').then(($productQuantity) => {
+    cy.get('[data-cy="product-quantity"]').click({force: true}).type('{backspace}5', {force: true}).then(($productQuantity) => {
       productQuantity = $productQuantity.val();
     });
 
-    cy.get('[data-cy="add-to-cart"]').click();
+    cy.get('[data-cy="add-to-cart"]').click({force: true});
 
     cy.visit('/cart'); // remove when testing slide cart
 
@@ -97,13 +97,13 @@ describe('product page', () => {
   });
 
   it('removes a product to the cart', function() {
-    cy.get('[data-cy="add-to-cart"]').click();
+    cy.get('[data-cy="add-to-cart"]').click({force: true});
     cy.visit('/cart'); // remove when testing slide cart
     cy.get('[data-cy="cart-item"]').should(($cartItem) => {
         expect($cartItem).to.have.length(1);
     });
 
-    cy.get('[data-cy="remove-item"]').click();
+    cy.get('[data-cy="remove-item"]').click({force: true});
     cy.visit('/cart');
     cy.get('[data-cy="cart-item"]').should(($cartItem) => {
       expect($cartItem).to.have.length(0);

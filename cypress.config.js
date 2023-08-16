@@ -3,7 +3,7 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   e2e: {
     // to-do: ENV for baseURL
-    baseUrl: 'http://127.0.0.1:9292/',
+    baseUrl: 'https://morgan-development-online-store.myshopify.com/',
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
