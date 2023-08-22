@@ -44,7 +44,7 @@ describe('product page', () => {
       });
     });
   
-    it(`adds a product to the cart: ${size} screen`, function() {
+    it(`adds a product to the cart: ${size[0]} x ${size[1]}px screen`, function() {
       if (Cypress._.isArray(size)) {
         cy.viewport(size[0], size[1])
       } else {
@@ -60,7 +60,7 @@ describe('product page', () => {
       });
     });
   
-    it(`adds a product to the cart w/ correct name, quantity, price, subtotal: ${size} screen`, function() {
+    it(`adds a product to the cart w/ correct name, quantity, price, subtotal: ${size[0]} x ${size[1]}px screen`, function() {
       if (Cypress._.isArray(size)) {
         cy.viewport(size[0], size[1])
       } else {
@@ -90,7 +90,7 @@ describe('product page', () => {
       });
     });
   
-    it(`adds multiple products to the cart w/ correct name, quantity, price, subtotal: ${size} screen`, function() {
+    it(`adds multiple products to the cart w/ correct name, quantity, price, subtotal: ${size[0]} x ${size[1]}px screen`, function() {
       if (Cypress._.isArray(size)) {
         cy.viewport(size[0], size[1])
       } else {
@@ -127,7 +127,7 @@ describe('product page', () => {
       });
     });
   
-    it(`removes a product to the cart: ${size} screen`, function() {
+    it(`removes a product to the cart: ${size[0]} x ${size[1]}px screen`, function() {
       if (Cypress._.isArray(size)) {
         cy.viewport(size[0], size[1])
       } else {
