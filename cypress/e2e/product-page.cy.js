@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+const sizes = [[390,844], [768,1024], [1024,768], [1440,900]]; // mobile, tablet, lg tablet, desktop
+
 describe('product page', () => {
   let productUrl = '/products/an-amazing-watch';
   let productTitle;
@@ -22,96 +24,128 @@ describe('product page', () => {
     });
   });
 
-  it('loads the product page w/ ATC button', () => {
-    cy.viewport('iphone-xr');
-    cy.screenshot(); // take screenshot of PDP mobile size
-    cy.viewport('macbook-15');
-    cy.screenshot(); // take screenshot of PDP desktop size
-    cy.url().should('include', '/products/');
+  sizes.forEach((size) => {
+    it(`loads the product page w/ ATC button: ${size[0]} x ${size[1]}px screen`, () => {
+      if (Cypress._.isArray(size)) {
+        cy.viewport(size[0], size[1])
+      } else {
+        cy.viewport(size)
+      }
 
-    // check if ATC btn exists
-    cy.get('[data-cy="add-to-cart"]').should(($addToCart) => {
-        expect($addToCart).to.have.length(1);
+      cy.viewport('iphone-xr');
+      cy.screenshot(); // take screenshot of PDP mobile size
+      cy.viewport('macbook-15');
+      cy.screenshot(); // take screenshot of PDP desktop size
+      cy.url().should('include', '/products/');
+  
+      // check if ATC btn exists
+      cy.get('[data-cy="add-to-cart"]').should(($addToCart) => {
+          expect($addToCart).to.have.length(1);
+      });
     });
-  });
+  
+    it(`adds a product to the cart: ${size} screen`, function() {
+      if (Cypress._.isArray(size)) {
+        cy.viewport(size[0], size[1])
+      } else {
+        cy.viewport(size)
+      }
 
-  it('adds a product to the cart', function() {
-    // check if ATC btn adds product to cart
-    cy.get('[data-cy="add-to-cart"]').click({force: true});
-    cy.visit('/cart'); // remove when testing slide cart
-
-    cy.get('[data-cy="cart-item"]').should(($cartItem) => {
-        expect($cartItem).to.have.length(1);
+      // check if ATC btn adds product to cart
+      cy.get('[data-cy="add-to-cart"]').click({force: true});
+      cy.visit('/cart'); // remove when testing slide cart
+  
+      cy.get('[data-cy="cart-item"]').should(($cartItem) => {
+          expect($cartItem).to.have.length(1);
+      });
     });
-  });
+  
+    it(`adds a product to the cart w/ correct name, quantity, price, subtotal: ${size} screen`, function() {
+      if (Cypress._.isArray(size)) {
+        cy.viewport(size[0], size[1])
+      } else {
+        cy.viewport(size)
+      }
 
-  it('adds a product to the cart w/ correct name, quantity, price, subtotal', function() {
-    cy.get('[data-cy="add-to-cart"]').click({force: true});
-    cy.visit('/cart'); // remove when testing slide cart
-
-    cy.get('[data-cy="cart-item-title"]').should(($cartProductTitle) => {
-      expect($cartProductTitle.text()).to.eq(productTitle);
+      cy.get('[data-cy="add-to-cart"]').click({force: true});
+      cy.visit('/cart'); // remove when testing slide cart
+  
+      cy.get('[data-cy="cart-item-title"]').should(($cartProductTitle) => {
+        expect($cartProductTitle.text()).to.eq(productTitle);
+      });
+  
+      cy.get('[data-cy="cart-item-quantity"]').should(($cartProductQuantity) => {
+        expect($cartProductQuantity.val()).to.eq(productQuantity);
+      });
+  
+      cy.get('[data-cy="cart-item-price"]').should(($cartProductPrice) => {
+        expect($cartProductPrice.text().trim()).to.eq(productPrice);
+      });
+  
+      cy.get('[data-cy="cart-subtotal"]').should(($cartSubtotal) => {
+        console.log($cartSubtotal);
+        let productPriceNum = Number(productPrice.replace(/[^0-9.-]+/g,""));
+        let cartSubtotalNum = Number($cartSubtotal.text().replace(/[^0-9.-]+/g,""));
+        expect(cartSubtotalNum).to.eq(productQuantity * productPriceNum);
+      });
     });
+  
+    it(`adds multiple products to the cart w/ correct name, quantity, price, subtotal: ${size} screen`, function() {
+      if (Cypress._.isArray(size)) {
+        cy.viewport(size[0], size[1])
+      } else {
+        cy.viewport(size)
+      }
 
-    cy.get('[data-cy="cart-item-quantity"]').should(($cartProductQuantity) => {
-      expect($cartProductQuantity.val()).to.eq(productQuantity);
+      // change quantity before adding to cart
+      cy.get('[data-cy="product-quantity"]').click({force: true}).type('{backspace}5', {force: true}).then(($productQuantity) => {
+        productQuantity = $productQuantity.val();
+      });
+  
+      cy.get('[data-cy="add-to-cart"]').click({force: true});
+  
+      cy.visit('/cart'); // remove when testing slide cart
+  
+      cy.get('[data-cy="cart-item-title"]').should(($cartProductTitle) => {
+        expect($cartProductTitle.text()).to.eq(productTitle);
+      });
+  
+      cy.get('[data-cy="cart-item-quantity"]').should(($cartProductQuantity) => {
+        expect($cartProductQuantity.val()).to.eq(productQuantity);
+      });
+  
+      cy.get('[data-cy="cart-item-price"]').should(($cartProductPrice) => {
+        let productPriceNum = Number(productPrice.replace(/[^0-9.-]+/g,""));
+        let cartProductPricelNum = Number($cartProductPrice.text().replace(/[^0-9.-]+/g,""));
+        expect(cartProductPricelNum).to.eq(productPriceNum * productQuantity);
+      });
+  
+      cy.get('[data-cy="cart-subtotal"]').should(($cartSubtotal) => {
+        let productPriceNum = Number(productPrice.replace(/[^0-9.-]+/g,""));
+        let cartSubtotalNum = Number($cartSubtotal.text().replace(/[^0-9.-]+/g,""));
+        expect(cartSubtotalNum).to.eq(productQuantity * productPriceNum);
+      });
     });
+  
+    it(`removes a product to the cart: ${size} screen`, function() {
+      if (Cypress._.isArray(size)) {
+        cy.viewport(size[0], size[1])
+      } else {
+        cy.viewport(size)
+      }
 
-    cy.get('[data-cy="cart-item-price"]').should(($cartProductPrice) => {
-      expect($cartProductPrice.text().trim()).to.eq(productPrice);
+      cy.get('[data-cy="add-to-cart"]').click({force: true});
+      cy.visit('/cart'); // remove when testing slide cart
+      cy.get('[data-cy="cart-item"]').should(($cartItem) => {
+          expect($cartItem).to.have.length(1);
+      });
+  
+      cy.get('[data-cy="remove-item"]').click({force: true});
+      cy.visit('/cart');
+      cy.get('[data-cy="cart-item"]').should(($cartItem) => {
+        expect($cartItem).to.have.length(0);
+      });
+      cy.get('body').contains('Your cart is empty');
     });
-
-    cy.get('[data-cy="cart-subtotal"]').should(($cartSubtotal) => {
-      console.log($cartSubtotal);
-      let productPriceNum = Number(productPrice.replace(/[^0-9.-]+/g,""));
-      let cartSubtotalNum = Number($cartSubtotal.text().replace(/[^0-9.-]+/g,""));
-      expect(cartSubtotalNum).to.eq(productQuantity * productPriceNum);
-    });
-  });
-
-  it('adds multiple products to the cart w/ correct name, quantity, price, subtotal', function() {
-    // change quantity before adding to cart
-    cy.get('[data-cy="product-quantity"]').click({force: true}).type('{backspace}5', {force: true}).then(($productQuantity) => {
-      productQuantity = $productQuantity.val();
-    });
-
-    cy.get('[data-cy="add-to-cart"]').click({force: true});
-
-    cy.visit('/cart'); // remove when testing slide cart
-
-    cy.get('[data-cy="cart-item-title"]').should(($cartProductTitle) => {
-      expect($cartProductTitle.text()).to.eq(productTitle);
-    });
-
-    cy.get('[data-cy="cart-item-quantity"]').should(($cartProductQuantity) => {
-      expect($cartProductQuantity.val()).to.eq(productQuantity);
-    });
-
-    cy.get('[data-cy="cart-item-price"]').should(($cartProductPrice) => {
-      let productPriceNum = Number(productPrice.replace(/[^0-9.-]+/g,""));
-      let cartProductPricelNum = Number($cartProductPrice.text().replace(/[^0-9.-]+/g,""));
-      expect(cartProductPricelNum).to.eq(productPriceNum * productQuantity);
-    });
-
-    cy.get('[data-cy="cart-subtotal"]').should(($cartSubtotal) => {
-      let productPriceNum = Number(productPrice.replace(/[^0-9.-]+/g,""));
-      let cartSubtotalNum = Number($cartSubtotal.text().replace(/[^0-9.-]+/g,""));
-      expect(cartSubtotalNum).to.eq(productQuantity * productPriceNum);
-    });
-  });
-
-  it('removes a product to the cart', function() {
-    cy.get('[data-cy="add-to-cart"]').click({force: true});
-    cy.visit('/cart'); // remove when testing slide cart
-    cy.get('[data-cy="cart-item"]').should(($cartItem) => {
-        expect($cartItem).to.have.length(1);
-    });
-
-    cy.get('[data-cy="remove-item"]').click({force: true});
-    cy.visit('/cart');
-    cy.get('[data-cy="cart-item"]').should(($cartItem) => {
-      expect($cartItem).to.have.length(0);
-    });
-    cy.get('body').contains('Your cart is empty');
   });
 });
