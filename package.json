@@ -4,6 +4,8 @@
   "description": "[![Generic badge](https://img.shields.io/badge/course%20available%3F-yes-green.svg)](https://shields.io/)",
   "main": "index.js",
   "scripts": {
+    "build": "npm run lint",
+    "start": "node ./scripts/start.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
