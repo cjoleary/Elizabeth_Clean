@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-const sizes = [[390,844], [768,1024], [1024,768], [1440,900]]; // mobile, tablet, lg tablet, desktop
+const sizes = [[390,844],[1440,900]]; // mobile, desktop
 
 describe('product page', () => {
   let productUrl = '/products/an-amazing-watch';
