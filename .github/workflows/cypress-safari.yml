@@ -19,6 +19,7 @@ jobs:
         with:
           #build: npm run build
           #start: npm start
+          browser: webkit
           record: true
           parallel: true
         env:
