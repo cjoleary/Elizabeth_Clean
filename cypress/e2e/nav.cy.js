@@ -24,12 +24,10 @@ describe('main site navigation', () => {
         cy.viewport('iphone-xr');
         // open
         cy.get('[data-cy="open-mobile-nav"]').click();
-        cy.screenshot();
         cy.get('[data-cy="mobile-nav"]').should('be.visible');
 
         // close
         cy.get('[data-cy="close-mobile-nav"]').click();
-        cy.screenshot();
         cy.get('[data-cy="mobile-nav"]').should('not.be.visible');
     });
   });
