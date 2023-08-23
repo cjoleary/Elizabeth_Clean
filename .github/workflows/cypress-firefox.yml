@@ -1,4 +1,4 @@
-name: Cypress E2E Tests - Chrome
+name: Cypress E2E Tests - Firefox
 
 on: [push]
 
@@ -14,12 +14,12 @@ jobs:
         uses: actions/checkout@v3
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
-      - name: Cypress Run - Chrome
+      - name: Cypress Run - Firefox
         uses: cypress-io/github-action@v5
         with:
           #build: npm run build
           #start: npm start
-          browser: chrome
+          browser: firefox
           record: true
           parallel: true
         env:
