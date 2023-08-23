@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      #matrix:
-        #containers: [1,2]
+      matrix:
+        containers: [1,2]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -20,8 +20,8 @@ jobs:
           #build: npm run build
           #start: npm start
           browser: chrome
-          #record: true
-          #parallel: true
+          record: true
+          parallel: true
         env:
           # For recording and parallelization to work you must set your CYPRESS_RECORD_KEY
           # in GitHub repo → Settings → Secrets → Actions
