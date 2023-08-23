@@ -26,7 +26,7 @@ jobs:
           #build: npm run build
           #start: npm start
           browser: webkit
-          record: true
+          #record: true
           #parallel: true
         env:
           # For recording and parallelization to work you must set your CYPRESS_RECORD_KEY
