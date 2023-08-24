@@ -29,7 +29,7 @@ jobs:
           record: true
           parallel: true
           # Cancel the run after 2 failed tests
-          auto-cancel-after-failures: 2
+          #auto-cancel-after-failures: 2
         env:
           # For recording and parallelization to work you must set your CYPRESS_RECORD_KEY
           # in GitHub repo → Settings → Secrets → Actions
