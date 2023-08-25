@@ -31,13 +31,15 @@ describe('product page', () => {
       } else {
         cy.viewport(size)
       }
-      cy.screenshot(); // take screenshot of PDP
+
       cy.url().should('include', '/products/');
   
       // check if ATC btn exists
       cy.get('[data-cy="add-to-cart"]').should(($addToCart) => {
           expect($addToCart).to.have.length(1);
       });
+
+      cy.screenshot(); // take screenshot of PDP
     });
   
     it(`adds a product to the cart: ${size[0]} x ${size[1]}px screen`, function() {
