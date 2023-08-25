@@ -31,11 +31,7 @@ describe('product page', () => {
       } else {
         cy.viewport(size)
       }
-
-      cy.viewport('iphone-xr');
-      cy.screenshot(); // take screenshot of PDP mobile size
-      cy.viewport('macbook-15');
-      cy.screenshot(); // take screenshot of PDP desktop size
+      cy.screenshot(); // take screenshot of PDP
       cy.url().should('include', '/products/');
   
       // check if ATC btn exists
