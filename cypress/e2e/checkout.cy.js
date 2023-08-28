@@ -55,7 +55,7 @@ describe('checkout flow', () => {
             .first()
             .click();
 
-        cy.get('button[type="submit"]') // update w/ button ID, continaute to payment
+        cy.get('button[type="submit"]') // update w/ button ID, continue to payment
             .first()
             .click();
 
