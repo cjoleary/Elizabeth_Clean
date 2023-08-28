@@ -5,7 +5,6 @@ describe('main site navigation', () => {
       cy.visit('/');
       cy.get('#password').type('Coleworld2324!');
       cy.get('button[type="submit"').click({force: true});
-      cy.visit('/');
     });
     
     it('checks nav responsiveness', () => {
